@@ -1,0 +1,14 @@
+# Large data files
+train.csv
+test.csv
+
+# Scaler files (can be regenerated)
+*.pkl
+
+# Python
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# OS
+.DS_Store
