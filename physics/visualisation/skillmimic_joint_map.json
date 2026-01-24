@@ -1,0 +1,482 @@
+{
+  "joint_map": {
+    "Pelvis": [
+      165,
+      166,
+      167
+    ],
+    "L_Hip": [
+      168,
+      169,
+      170
+    ],
+    "L_Knee": [
+      171,
+      172,
+      173
+    ],
+    "L_Ankle": [
+      174,
+      175,
+      176
+    ],
+    "L_Toe": [
+      177,
+      178,
+      179
+    ],
+    "R_Hip": [
+      180,
+      181,
+      182
+    ],
+    "R_Knee": [
+      183,
+      184,
+      185
+    ],
+    "R_Ankle": [
+      186,
+      187,
+      188
+    ],
+    "R_Toe": [
+      189,
+      190,
+      191
+    ],
+    "Torso": [
+      192,
+      193,
+      194
+    ],
+    "Spine": [
+      195,
+      196,
+      197
+    ],
+    "Spine2": [
+      198,
+      199,
+      200
+    ],
+    "Chest": [
+      201,
+      202,
+      203
+    ],
+    "Neck": [
+      204,
+      205,
+      206
+    ],
+    "Head": [
+      207,
+      208,
+      209
+    ],
+    "L_Thorax": [
+      210,
+      211,
+      212
+    ],
+    "L_Shoulder": [
+      213,
+      214,
+      215
+    ],
+    "L_Elbow": [
+      216,
+      217,
+      218
+    ],
+    "L_Wrist": [
+      219,
+      220,
+      221
+    ],
+    "L_Index1": [
+      222,
+      223,
+      224
+    ],
+    "L_Index2": [
+      225,
+      226,
+      227
+    ],
+    "L_Index3": [
+      228,
+      229,
+      230
+    ],
+    "L_Middle1": [
+      231,
+      232,
+      233
+    ],
+    "L_Middle2": [
+      234,
+      235,
+      236
+    ],
+    "L_Middle3": [
+      237,
+      238,
+      239
+    ],
+    "L_Pinky1": [
+      240,
+      241,
+      242
+    ],
+    "L_Pinky2": [
+      243,
+      244,
+      245
+    ],
+    "L_Pinky3": [
+      246,
+      247,
+      248
+    ],
+    "L_Ring1": [
+      249,
+      250,
+      251
+    ],
+    "L_Ring2": [
+      252,
+      253,
+      254
+    ],
+    "L_Ring3": [
+      255,
+      256,
+      257
+    ],
+    "L_Thumb1": [
+      258,
+      259,
+      260
+    ],
+    "L_Thumb2": [
+      261,
+      262,
+      263
+    ],
+    "L_Thumb3": [
+      264,
+      265,
+      266
+    ],
+    "R_Thorax": [
+      267,
+      268,
+      269
+    ],
+    "R_Shoulder": [
+      270,
+      271,
+      272
+    ],
+    "R_Elbow": [
+      273,
+      274,
+      275
+    ],
+    "R_Wrist": [
+      276,
+      277,
+      278
+    ],
+    "R_Index1": [
+      279,
+      280,
+      281
+    ],
+    "R_Index2": [
+      282,
+      283,
+      284
+    ],
+    "R_Index3": [
+      285,
+      286,
+      287
+    ],
+    "R_Middle1": [
+      288,
+      289,
+      290
+    ],
+    "R_Middle2": [
+      291,
+      292,
+      293
+    ],
+    "R_Middle3": [
+      294,
+      295,
+      296
+    ],
+    "R_Pinky1": [
+      297,
+      298,
+      299
+    ],
+    "R_Pinky2": [
+      300,
+      301,
+      302
+    ],
+    "R_Pinky3": [
+      303,
+      304,
+      305
+    ],
+    "R_Ring1": [
+      306,
+      307,
+      308
+    ],
+    "R_Ring2": [
+      309,
+      310,
+      311
+    ],
+    "R_Ring3": [
+      312,
+      313,
+      314
+    ],
+    "R_Thumb1": [
+      315,
+      316,
+      317
+    ],
+    "R_Thumb2": [
+      318,
+      319,
+      320
+    ],
+    "R_Thumb3": [
+      321,
+      322,
+      323
+    ]
+  },
+  "skeleton_connections": [
+    [
+      "Pelvis",
+      "Torso"
+    ],
+    [
+      "Torso",
+      "Spine"
+    ],
+    [
+      "Spine",
+      "Spine2"
+    ],
+    [
+      "Spine2",
+      "Chest"
+    ],
+    [
+      "Chest",
+      "Neck"
+    ],
+    [
+      "Neck",
+      "Head"
+    ],
+    [
+      "Pelvis",
+      "L_Hip"
+    ],
+    [
+      "L_Hip",
+      "L_Knee"
+    ],
+    [
+      "L_Knee",
+      "L_Ankle"
+    ],
+    [
+      "L_Ankle",
+      "L_Toe"
+    ],
+    [
+      "Pelvis",
+      "R_Hip"
+    ],
+    [
+      "R_Hip",
+      "R_Knee"
+    ],
+    [
+      "R_Knee",
+      "R_Ankle"
+    ],
+    [
+      "R_Ankle",
+      "R_Toe"
+    ],
+    [
+      "Chest",
+      "L_Thorax"
+    ],
+    [
+      "L_Thorax",
+      "L_Shoulder"
+    ],
+    [
+      "L_Shoulder",
+      "L_Elbow"
+    ],
+    [
+      "L_Elbow",
+      "L_Wrist"
+    ],
+    [
+      "L_Wrist",
+      "L_Index1"
+    ],
+    [
+      "L_Index1",
+      "L_Index2"
+    ],
+    [
+      "L_Index2",
+      "L_Index3"
+    ],
+    [
+      "L_Wrist",
+      "L_Middle1"
+    ],
+    [
+      "L_Middle1",
+      "L_Middle2"
+    ],
+    [
+      "L_Middle2",
+      "L_Middle3"
+    ],
+    [
+      "L_Wrist",
+      "L_Pinky1"
+    ],
+    [
+      "L_Pinky1",
+      "L_Pinky2"
+    ],
+    [
+      "L_Pinky2",
+      "L_Pinky3"
+    ],
+    [
+      "L_Wrist",
+      "L_Ring1"
+    ],
+    [
+      "L_Ring1",
+      "L_Ring2"
+    ],
+    [
+      "L_Ring2",
+      "L_Ring3"
+    ],
+    [
+      "L_Wrist",
+      "L_Thumb1"
+    ],
+    [
+      "L_Thumb1",
+      "L_Thumb2"
+    ],
+    [
+      "L_Thumb2",
+      "L_Thumb3"
+    ],
+    [
+      "Chest",
+      "R_Thorax"
+    ],
+    [
+      "R_Thorax",
+      "R_Shoulder"
+    ],
+    [
+      "R_Shoulder",
+      "R_Elbow"
+    ],
+    [
+      "R_Elbow",
+      "R_Wrist"
+    ],
+    [
+      "R_Wrist",
+      "R_Index1"
+    ],
+    [
+      "R_Index1",
+      "R_Index2"
+    ],
+    [
+      "R_Index2",
+      "R_Index3"
+    ],
+    [
+      "R_Wrist",
+      "R_Middle1"
+    ],
+    [
+      "R_Middle1",
+      "R_Middle2"
+    ],
+    [
+      "R_Middle2",
+      "R_Middle3"
+    ],
+    [
+      "R_Wrist",
+      "R_Pinky1"
+    ],
+    [
+      "R_Pinky1",
+      "R_Pinky2"
+    ],
+    [
+      "R_Pinky2",
+      "R_Pinky3"
+    ],
+    [
+      "R_Wrist",
+      "R_Ring1"
+    ],
+    [
+      "R_Ring1",
+      "R_Ring2"
+    ],
+    [
+      "R_Ring2",
+      "R_Ring3"
+    ],
+    [
+      "R_Wrist",
+      "R_Thumb1"
+    ],
+    [
+      "R_Thumb1",
+      "R_Thumb2"
+    ],
+    [
+      "R_Thumb2",
+      "R_Thumb3"
+    ]
+  ],
+  "num_bodies": 53,
+  "num_features": 337,
+  "validated": true
+}

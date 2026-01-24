@@ -1,6 +1,8 @@
 # Large data files
 train.csv
 test.csv
+Claude.md
+Elliot_notes.md
 
 # Scaler files (can be regenerated)
 *.pkl

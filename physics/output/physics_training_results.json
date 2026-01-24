@@ -1,0 +1,44 @@
+{
+  "summary": {
+    "XGBoost (single)": 27.825375512055746,
+    "LightGBM (single)": 30.977168772768465,
+    "Per-Participant": 14.562943854326532,
+    "Per-Target": 27.825375512055746
+  },
+  "best_approach": "Per-Participant",
+  "best_mse": 14.562943854326532,
+  "details": {
+    "xgboost_single_angle": {
+      "mean_mse": 27.178161386810398,
+      "std_mse": 20.08428974222482
+    },
+    "xgboost_single_depth": {
+      "mean_mse": 38.85034326865892,
+      "std_mse": 28.017438224998344
+    },
+    "xgboost_single_lr": {
+      "mean_mse": 17.447621880697927,
+      "std_mse": 3.1113272358692576
+    },
+    "lightgbm_single_angle": {
+      "mean_mse": 23.00187213629032,
+      "std_mse": 13.43409798959672
+    },
+    "lightgbm_single_depth": {
+      "mean_mse": 50.478807007296794,
+      "std_mse": 32.45574036383787
+    },
+    "lightgbm_single_lr": {
+      "mean_mse": 19.45082717471829,
+      "std_mse": 3.3335983024941105
+    },
+    "per_participant": {
+      "mean_mse": 14.562943854326532,
+      "std_mse": 0
+    },
+    "per_target": {
+      "mean_mse": 27.825375512055746,
+      "std_mse": 0
+    }
+  }
+}

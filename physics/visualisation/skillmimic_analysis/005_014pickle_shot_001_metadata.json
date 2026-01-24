@@ -1,0 +1,25 @@
+{
+  "source_file": "/Users/elliot18/Downloads/005_014pickle_shot_001.pt",
+  "shape": [
+    104,
+    337
+  ],
+  "dtype": "torch.float32",
+  "num_frames": 104,
+  "num_features": 337,
+  "memory_kb": 136.90625,
+  "global_stats": {
+    "min": -1.6820920705795288,
+    "max": 2.8834948539733887,
+    "mean": 0.4595726430416107,
+    "std": 0.6820061802864075,
+    "median": 0.0714048370718956
+  },
+  "temporal_stats": {
+    "frame_to_frame_l2_mean": 0.3599212169647217,
+    "frame_to_frame_l2_max": 1.0666213035583496,
+    "frame_to_frame_l2_min": 0.0919676348567009
+  },
+  "nan_count": 0,
+  "inf_count": 0
+}

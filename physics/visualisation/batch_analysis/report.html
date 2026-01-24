@@ -1,0 +1,39 @@
+
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>SkillMimic Batch Analysis Report</title>
+        <style>
+            body { font-family: Arial, sans-serif; margin: 20px; }
+            h1 { color: #333; }
+            h2 { color: #666; margin-top: 30px; }
+            table { border-collapse: collapse; width: 100%; margin-top: 10px; }
+            th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+            th { background-color: #f2f2f2; }
+            .metric { font-weight: bold; }
+            .good { color: green; }
+            .warning { color: orange; }
+            .error { color: red; }
+        </style>
+    </head>
+    <body>
+        <h1>SkillMimic Batch Analysis Report</h1>
+
+        <h2>Summary</h2>
+        <table>
+            <tr><td class="metric">Total Files</td><td>1</td></tr>
+            <tr><td class="metric">Consistent Shape</td><td class="good">True</td></tr>
+            <tr><td class="metric">Consistent Features</td><td class="good">True</td></tr>
+            <tr><td class="metric">Unique Shapes</td><td>[torch.Size([104, 337])]</td></tr>
+            <tr><td class="metric">Data Types</td><td>[torch.float32]</td></tr>
+        </table>
+    
+        <h2>Cross-File Statistics</h2>
+        <table>
+            <tr><td class="metric">Number of Features</td><td>337</td></tr>
+            <tr><td class="metric">Number of Files</td><td>1</td></tr>
+        </table>
+        
+    </body>
+    </html>
+    

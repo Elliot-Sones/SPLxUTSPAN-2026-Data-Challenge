@@ -1,0 +1,23 @@
+SkillMimic Joint Position Indices (triplets of x,y,z)
+============================================================
+
+Joint  0: features [ 51,  52,  53]
+Joint  1: features [ 54,  55,  56]
+Joint  2: features [ 57,  58,  59]
+Joint  3: features [108, 109, 110]
+Joint  4: features [111, 112, 113]
+Joint  5: features [114, 115, 116]
+Joint  6: features [220, 221, 222]
+Joint  7: features [223, 224, 225]
+Joint  8: features [226, 227, 228]
+Joint  9: features [229, 230, 231]
+Joint 10: features [232, 233, 234]
+Joint 11: features [235, 236, 237]
+Joint 12: features [238, 239, 240]
+Joint 13: features [241, 242, 243]
+Joint 14: features [244, 245, 246]
+Joint 15: features [247, 248, 249]
+Joint 16: features [250, 251, 252]
+Joint 17: features [253, 254, 255]
+Joint 18: features [259, 260, 261]
+Joint 19: features [262, 263, 264]
