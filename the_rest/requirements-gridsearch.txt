@@ -1,0 +1,17 @@
+# Core dependencies for exhaustive grid search
+numpy>=1.24.0
+pandas>=2.0.0
+scikit-learn>=1.3.0
+scipy>=1.10.0
+joblib>=1.3.0
+
+# Gradient boosting libraries
+lightgbm>=4.0.0
+xgboost>=2.0.0
+catboost>=1.2.0
+
+# Hyperparameter tuning
+optuna>=3.4.0
+
+# Progress bars
+tqdm>=4.66.0

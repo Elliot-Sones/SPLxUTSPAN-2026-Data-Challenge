@@ -4,6 +4,9 @@ test.csv
 Claude.md
 Elliot_notes.md
 
+# Large output JSON files (use .gz versions instead)
+the_rest/output/player_*_anomalies.json
+
 # Scaler files (can be regenerated)
 *.pkl
 

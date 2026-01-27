@@ -1,0 +1,30 @@
+============================================================
+REGRESSION COEFFICIENT INTERPRETATION
+============================================================
+
+How to read: 'For every 1 unit increase in X, Y changes by beta units'
+95% CI shows the range of plausible values for the true effect.
+
+
+--- ANGLE ---
+  left_big_toe_z (mean): 1 unit change -> -107.7288 degrees decrease (95% CI: [-131.8517, -83.6059], R2=0.183)
+  left_small_toe_z (mean): 1 unit change -> -96.9590 degrees decrease (95% CI: [-122.0604, -71.8577], R2=0.143)
+  right_small_toe_z (mean): 1 unit change -> -85.1802 degrees decrease (95% CI: [-105.7704, -64.5899], R2=0.161)
+  right_big_toe_z (mean): 1 unit change -> -61.9124 degrees decrease (95% CI: [-79.8789, -43.9460], R2=0.117)
+  left_big_toe_z (variability): 1 unit change -> -50.4017 degrees decrease (95% CI: [-72.9804, -27.8230], R2=0.053)
+
+--- DEPTH ---
+  right_heel_z (mean): 1 unit change -> 23.0936 cm (depth units) increase (95% CI: [10.7531, 35.4340], R2=0.038)
+  right_ankle_z (mean): 1 unit change -> 18.4006 cm (depth units) increase (95% CI: [8.3172, 28.4841], R2=0.036)
+  left_heel_z (mean): 1 unit change -> 15.8352 cm (depth units) increase (95% CI: [3.5542, 28.1162], R2=0.018)
+  left_ankle_z (mean): 1 unit change -> 14.3632 cm (depth units) increase (95% CI: [4.4336, 24.2928], R2=0.023)
+  right_knee_z (mean): 1 unit change -> 5.4244 cm (depth units) increase (95% CI: [2.0377, 8.8112], R2=0.028)
+
+--- LEFT_RIGHT ---
+  right_small_toe_z (mean): 1 unit change -> 19.1715 units (left-right) increase (95% CI: [1.7491, 36.5938], R2=0.013)
+  right_elbow_z (variability): 1 unit change -> 3.2650 units (left-right) increase (95% CI: [0.3757, 6.1542], R2=0.014)
+  right_heel_y (variability): 1 unit change -> 2.8773 units (left-right) increase (95% CI: [0.8351, 4.9196], R2=0.022)
+  right_ankle_y (variability): 1 unit change -> 2.8071 units (left-right) increase (95% CI: [0.8027, 4.8114], R2=0.021)
+  right_hip_y (variability): 1 unit change -> 2.7798 units (left-right) increase (95% CI: [0.6464, 4.9132], R2=0.019)
+
+============================================================
