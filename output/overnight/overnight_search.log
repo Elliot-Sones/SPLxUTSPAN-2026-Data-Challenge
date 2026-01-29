@@ -1,0 +1,27 @@
+[2026-01-28 21:09:43] ======================================================================
+[2026-01-28 21:09:43] OVERNIGHT EXPERIMENT SYSTEM v2
+[2026-01-28 21:09:43] Started: 2026-01-28T21:09:43.342101
+[2026-01-28 21:09:43] Seed: 42, Folds: 5
+[2026-01-28 21:09:43] ======================================================================
+[2026-01-28 21:09:43] Loading data...
+[2026-01-28 21:09:57] Data: 345 samples, 240 frames x 207 features
+[2026-01-28 21:09:57] Participants: [1 2 3 4 5]
+[2026-01-28 21:09:57] ======================================================================
+[2026-01-28 21:09:57] PHASE 1: BASELINE REPRODUCTION
+[2026-01-28 21:09:57] ======================================================================
+[2026-01-28 21:09:59] START: baseline_global_f4
+[2026-01-28 21:10:12] DONE: baseline_global_f4 - Total: 0.027926 (A:0.0356 D:0.0310 LR:0.0172) [12.8s]
+[2026-01-28 21:10:12] START: baseline_per_player_f4
+[2026-01-28 21:10:35] DONE: baseline_per_player_f4 - Total: 0.027926 (A:0.0356 D:0.0310 LR:0.0172) [22.7s]
+[2026-01-28 21:10:35] ======================================================================
+[2026-01-28 21:10:35] EXPERIMENT COMPLETE
+[2026-01-28 21:10:35] Finished: 2026-01-28T21:10:35.271864
+[2026-01-28 21:10:35] 
+TOP 5 RESULTS:
+[2026-01-28 21:10:35]   baseline_global_f4: 0.027926 (A:0.0356 D:0.0310 LR:0.0172)
+[2026-01-28 21:10:35]   baseline_per_player_f4: 0.027926 (A:0.0356 D:0.0310 LR:0.0172)
+[2026-01-28 21:10:35] 
+Results: /Users/elliot18/Desktop/Home/Projects/SPLxUTSPAN-2026-Data-Challenge/output/overnight/overnight_results.csv
+[2026-01-28 21:10:35] Configs: /Users/elliot18/Desktop/Home/Projects/SPLxUTSPAN-2026-Data-Challenge/output/overnight/configs
+[2026-01-28 21:10:35] OOF predictions: /Users/elliot18/Desktop/Home/Projects/SPLxUTSPAN-2026-Data-Challenge/output/overnight/oof_predictions
+[2026-01-28 21:10:35] ======================================================================

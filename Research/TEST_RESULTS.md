@@ -478,3 +478,347 @@ Results:
 
 Notes:
 - arm_straight_snap improves over wrist_snap but still underperforms wrist_speed on angle and depth in this setup.
+
+---
+
+## 2026-01-28 - Per-Target Independent Hyperparameter Tuning Experiment
+
+**Date**: 2026-01-28
+
+### Objective
+
+Test whether per-target hyperparameter tuning improves over shared hyperparameters. The previous S1/S2/S3/S4 strategy comparison showed S1=S2 and S3=S4 because all used identical hyperparameters - this experiment properly tests per-target optimization.
+
+### Background: Why Previous S1 vs S2 Showed No Difference
+
+The original grid search tested four strategies:
+- S1 (Joint): MultiOutputRegressor with shared hyperparams
+- S2 (Separate): 3 models with shared hyperparams
+- S3 (Per-participant): 5 models with shared hyperparams
+- S4 (Per-participant + per-target): 15 models with shared hyperparams
+
+**Problem**: S1 and S2 both used identical hyperparameters for all targets. MultiOutputRegressor internally creates separate models per target - functionally identical to S2. This is why results were identical (0.029338).
+
+### Configuration
+
+| Parameter | Value |
+|-----------|-------|
+| Data | 345 training shots, 5 participants |
+| Features | F4 (hybrid with participant ID), 132 features |
+| Model | M1 (LightGBM) |
+| Preprocessing | P4 (standardized) |
+| CV | GroupKFold by participant, 5 folds |
+| Optuna trials | 30 per target |
+| Per-participant | Yes (fallback model for held-out participant) |
+
+### Script
+
+```
+src/per_target_experiment.py
+```
+
+Command:
+```bash
+uv run python src/per_target_experiment.py --n-trials 30
+```
+
+### Three Approaches Compared
+
+1. **Baseline**: Per-player models with shared LightGBM defaults
+   - n_estimators=500, learning_rate=0.02, num_leaves=20
+
+2. **Global Tuned**: Optuna tunes hyperparams to minimize combined MSE across all 3 targets
+   - Same params for angle, depth, left_right
+
+3. **Per-Target Tuned**: Optuna tunes hyperparams independently for each target
+   - Different optimal params for angle vs depth vs left_right
+
+### Results
+
+| Approach | Angle MSE | Depth MSE | L/R MSE | Total MSE | vs Baseline |
+|----------|-----------|-----------|---------|-----------|-------------|
+| Baseline (shared params) | 0.0262 | 0.0326 | 0.0176 | 0.0255 | - |
+| Global tuned | 0.0233 | 0.0186 | 0.0161 | 0.0193 | +24.2% |
+| **Per-target tuned** | **0.0207** | **0.0177** | **0.0154** | **0.0179** | **+29.8%** |
+
+**Per-target tuning beats global tuning by 7.3%** (0.0179 vs 0.0193)
+
+### Optimal Hyperparameters Per Target
+
+| Target | n_estimators | learning_rate | Character |
+|--------|-------------|---------------|-----------|
+| angle | 111 | 0.0646 | Aggressive - fewer trees, higher lr |
+| depth | 176 | 0.0072 | Conservative - more trees, lower lr |
+| left_right | 154 | 0.0050 | Most conservative - lowest lr |
+
+### Key Findings
+
+1. **Per-target tuning provides significant improvement**: 29.8% over baseline, 7.3% over global tuning
+
+2. **Each target benefits from different hyperparameters**:
+   - **angle**: Aggressive learning (lr=0.065) with fewer trees (111) - complex signal needs faster adaptation
+   - **depth**: Conservative (lr=0.007) with more trees (176) - weaker signal needs careful regularization
+   - **left_right**: Most conservative (lr=0.005) - weakest signal, avoid overfitting
+
+3. **Depth showed biggest per-target gain**: 45.7% improvement vs baseline (0.0326 -> 0.0177)
+
+4. **This validates the hypothesis**: Targets ARE fundamentally different biomechanically:
+   - angle: lower body mechanics at frame 153 (R2=0.45)
+   - depth: left hand positioning at frame 102 (R2=0.08)
+   - left_right: right finger control at frame 237 (R2=0.025)
+
+### Conclusion
+
+**Optimal strategy: Per-player + Per-target with independent hyperparameter tuning**
+
+The combination of:
+1. Per-player models (validated in S3 vs S1: +16% improvement)
+2. Per-target hyperparameter tuning (validated here: +7.3% over global tuning)
+
+This means the optimal approach uses **15 independently-tuned models** (5 players x 3 targets), each with hyperparameters optimized for that specific player-target combination.
+
+### Recommended Production Configuration
+
+For each (player, target) combination, tune hyperparameters using Optuna with:
+- 30+ trials per combination
+- GroupKFold CV within that player's data
+- Optimize for that specific target's scaled MSE
+
+Expected improvement over baseline S3: ~30%+ (combining per-player benefit with per-target tuning)
+
+---
+
+## Submission 3 - Per-Player Per-Target Model
+
+**Date**: 2026-01-28
+
+### Configuration
+
+| Parameter | Value |
+|-----------|-------|
+| Model | LightGBM (per-player per-target) |
+| Features | F4 (hybrid with participant ID), 132 features |
+| Strategy | 15 models (5 players x 3 targets) |
+| Preprocessing | StandardScaler |
+| Hyperparameter tuning | Optuna, 30 trials per target |
+
+### Tuned Hyperparameters
+
+| Target | n_estimators | learning_rate | max_depth | num_leaves |
+|--------|-------------|---------------|-----------|------------|
+| angle | 111 | 0.0646 | 10 | 30 |
+| depth | 176 | 0.00724 | 12 | 5 |
+| left_right | 154 | 0.00502 | 5 | 21 |
+
+### Results
+
+| Metric | Score |
+|--------|-------|
+| CV Score (training) | 0.0179 |
+| **Leaderboard Score** | **0.010559** |
+
+### CV Breakdown
+
+| Target | CV MSE |
+|--------|--------|
+| angle | 0.0207 |
+| depth | 0.0177 |
+| left_right | 0.0154 |
+
+### Script
+
+```bash
+uv run python src/create_submission.py
+```
+
+### File
+
+`submission/submission_3.csv`
+
+### Notes
+
+- Leaderboard score (0.0106) better than CV score (0.0179)
+- Per-target hyperparameter tuning validated as effective approach
+- Each target benefits from different learning rates and tree configurations
+
+---
+
+## Submission 8 - Per-Participant Internal 5-Fold CV (Best Score)
+
+**Date**: 2026-01-29
+
+### Configuration
+
+| Parameter | Value |
+|-----------|-------|
+| Model | LightGBM |
+| Features | F4 (hybrid), 126 features |
+| Strategy | 15 models (5 players x 3 targets) |
+| CV Method | **Internal 5-fold CV within each participant** |
+| Preprocessing | StandardScaler per participant |
+
+### Hyperparameters
+
+| Parameter | Value |
+|-----------|-------|
+| n_estimators | 100 |
+| num_leaves | 10 |
+| learning_rate | 0.05 |
+| reg_alpha | 0.5 |
+| reg_lambda | 0.5 |
+
+### Results
+
+| Metric | Score |
+|--------|-------|
+| CV Score (scaled MSE) | 0.01054 |
+| **Leaderboard Score** | **0.010220** |
+
+### CV Breakdown (Raw MSE)
+
+| Target | Raw MSE | Scaled MSE |
+|--------|---------|------------|
+| angle | 6.80 | 0.0076 |
+| depth | 19.05 | 0.0108 |
+| left_right | 13.58 | 0.0133 |
+
+### Per-Player CV Results
+
+| Player | Samples | angle MSE | depth MSE | left_right MSE |
+|--------|---------|-----------|-----------|----------------|
+| 1 | 70 | 1.65 | 12.67 | 16.28 |
+| 2 | 66 | 4.99 | 15.17 | 17.12 |
+| 3 | 68 | 2.94 | 3.77 | 6.00 |
+| 4 | 67 | 6.15 | 18.78 | 14.05 |
+| 5 | 74 | 17.40 | 42.84 | 14.43 |
+
+### Script
+
+```bash
+uv run python src/create_submission_0104.py
+```
+
+### File
+
+`submission/submission_8.csv`
+
+### Key Differences from Submission 3
+
+| Aspect | Submission 3 | Submission 8 |
+|--------|--------------|--------------|
+| CV Method | Leave-one-participant-out | Internal 5-fold within participant |
+| Hyperparameters | Optuna-tuned per target | Simple fixed params |
+| n_estimators | 111-176 | 100 |
+| learning_rate | 0.005-0.065 | 0.05 |
+| Leaderboard | 0.010559 | **0.010220** |
+
+### Notes
+
+- **Best leaderboard score achieved**: 0.010220
+- Simpler hyperparameters (fixed across all targets) outperformed complex per-target tuning
+- Internal 5-fold CV within each participant is more representative of test set distribution
+- Player 5 shows highest error across all targets (potential area for improvement)
+
+---
+
+## 2026-01-29 - Advanced Feature Engineering and Ensemble Optimization
+
+### Objective
+
+Beat the winners' score of 0.007 MSE.
+
+### Key Insight: Player 5 Variance Analysis
+
+Player 5 has significantly higher variance in all targets:
+
+| Target | Player 5 Std | Other Players Std Range | Ratio |
+|--------|--------------|------------------------|-------|
+| angle | 4.10 | 1.30-2.70 | 1.5-3x higher |
+| depth | 8.16 | 2.32-4.85 | 1.7-3.5x higher |
+| left_right | 4.16 | 2.85-4.13 | Similar |
+
+Player 5 is inherently more inconsistent in their shooting, making prediction harder.
+
+### New Feature Engineering
+
+1. **Frame-specific features** based on research findings:
+   - Frame 153 for ANGLE (ankle/knee z, R2=0.45)
+   - Frame 102 for DEPTH (hand positions, R2=0.08)
+   - Frame 237 for LEFT_RIGHT (finger positions, R2=0.025)
+
+2. **Advanced features** (src/advanced_features.py):
+   - 62 angle-critical features
+   - 48 depth-critical features
+   - 47 left_right-critical features
+   - 10 release features
+   - 64 phase features
+   - Total: 242 new features
+
+3. Combined with hybrid features: 368 total features
+
+### Submission Results
+
+| Submission | Model | CV Score | LB Score | Notes |
+|------------|-------|----------|----------|-------|
+| 9 | Ensemble (LGB+Cat+XGB+Ridge) | 0.008441 | **0.009109** | First improved ensemble |
+| 10 | Optuna-tuned ensemble | 0.007919 | TBD | Per-player per-target tuning |
+| 11 | Ultra-optimized | **0.007767** | TBD | Best CV, Player 5 special handling |
+| 12 | Robust bagging (5 seeds) | 0.008198 | TBD | More variance reduction |
+| 13 | Blend (10+11+12) | - | TBD | Weighted by inverse CV |
+| 14 | Player 5 mean-blend | 0.008533 | TBD | Conservative for high-variance player |
+| 15 | Blend (heavy on 11) | - | TBD | 20% sub9 + 30% sub10 + 50% sub11 |
+| 16 | Blend (heavy on 9) | - | TBD | 50% sub9 + 25% sub10 + 25% sub11 |
+| 17 | Simple Ridge | 0.010923 | TBD | Baseline comparison |
+
+### Best Configuration (Submission 11)
+
+**Model**: Ultra-optimized ensemble
+
+**Strategy**:
+- Per-player per-target models (15 total)
+- 4 base models: LightGBM, CatBoost, XGBoost, Ridge
+- Optuna tuning: 50 trials for Player 5, 25 for others
+- More regularization for Player 5
+- Target-specific feature selection (80-120 features per target)
+
+**Hyperparameter strategy**:
+- Players 1-4: Standard optimization
+- Player 5: Smaller trees, higher regularization, more conservative
+
+**CV Breakdown**:
+
+| Player | angle MSE | depth MSE | left_right MSE |
+|--------|-----------|-----------|----------------|
+| 1 | 1.58 | 7.33 | 9.89 |
+| 2 | 4.14 | 9.91 | 11.70 |
+| 3 | 2.57 | 2.96 | 5.39 |
+| 4 | 4.96 | 10.75 | 11.12 |
+| 5 | 14.07 | 28.21 | 13.95 |
+
+**Overall CV**: 0.007767
+
+### Progress Summary
+
+| Metric | Previous Best | New Best | Improvement |
+|--------|---------------|----------|-------------|
+| CV Score | 0.01054 | 0.007767 | 26.3% |
+| LB Score | 0.010220 | 0.009109 | 10.9% |
+
+### Recommendations
+
+Submit in order:
+1. **submission_11.csv** - Best CV (0.007767)
+2. **submission_15.csv** - Blend with proven LB performer
+3. **submission_10.csv** - Second best CV (0.007919)
+4. **submission_13.csv** - Conservative blend
+
+### Files Created
+
+- `src/advanced_features.py` - Frame-specific feature engineering
+- `src/ensemble_submission.py` - Multi-model ensemble
+- `src/optimized_ensemble.py` - Optuna-tuned ensemble
+- `src/ultra_optimized.py` - Best performing model
+- `src/robust_ensemble.py` - Bagging with multiple seeds
+- `src/final_submission.py` - Player 5 mean-blending
+- `src/blend_submissions.py` - Submission blending
+- `src/simple_ridge.py` - Ridge baseline

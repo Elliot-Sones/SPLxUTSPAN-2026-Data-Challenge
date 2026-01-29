@@ -1,0 +1,3 @@
+experiment_name,timestamp,phase,model_type,feature_set,n_features,angle_mse,depth_mse,left_right_mse,total_scaled_mse,per_player,per_target,training_time_seconds,notes,config_file,oof_file
+baseline_global_f4,2026-01-28T21:10:12.589372,baseline,LightGBM,F4_hybrid_pid,132,0.03558707982301712,0.0309916902333498,0.017200378701090813,0.027926382919152577,False,True,12.8,"Global model, F4 features - baseline comparison",baseline_global_f4.json,baseline_global_f4.npy
+baseline_per_player_f4,2026-01-28T21:10:35.269962,baseline,LightGBM,F4_hybrid_pid,132,0.03558707982301712,0.0309916902333498,0.017200378701090813,0.027926382919152577,True,True,22.7,"Per-player model, F4 features - this is submission_3 approach",baseline_per_player_f4.json,baseline_per_player_f4.npy

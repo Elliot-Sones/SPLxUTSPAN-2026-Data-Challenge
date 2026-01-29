@@ -1,0 +1,112 @@
+[21:30:46] ============================================================
+[21:30:46] Comprehensive Overnight Experiment System v3
+[21:30:46] ============================================================
+[21:30:46] Output directory: /Users/elliot18/Desktop/Home/Projects/SPLxUTSPAN-2026-Data-Challenge/output/overnight
+[21:30:46] Resume mode: False
+[21:31:00] ============================================================
+[21:31:00] PHASE: Phase 1: Baselines (4 experiments)
+[21:31:00] ============================================================
+[21:31:00] START: baseline_f4_global
+[21:31:07] DONE: baseline_f4_global - MSE: 0.018416 (7.0s)
+[21:31:07] START: baseline_f4_per_player
+[21:31:14] DONE: baseline_f4_per_player - MSE: 0.018416 (6.7s)
+[21:31:14] START: baseline_raw_ridge
+[21:31:15] DONE: baseline_raw_ridge - MSE: 0.082032 (1.3s)
+[21:31:15] START: baseline_pca50_ridge
+[21:31:15] DONE: baseline_pca50_ridge - MSE: 0.099074 (0.0s)
+[21:31:15] Phase Phase 1 complete:
+[21:31:15]   Completed: 4/4
+[21:31:15]   Best: baseline_f4_global = 0.018416
+[21:31:15] ============================================================
+[21:31:15] PHASE: Phase 2: Feature Types (9 experiments)
+[21:31:15] ============================================================
+[21:31:15] START: feat_f4_hybrid
+[21:31:22] DONE: feat_f4_hybrid - MSE: 0.018416 (6.8s)
+[21:31:22] START: feat_velocity
+[21:31:29] DONE: feat_velocity - MSE: 0.031639 (6.4s)
+[21:31:29] START: feat_acceleration
+[21:31:35] DONE: feat_acceleration - MSE: 0.024771 (6.2s)
+[21:31:35] START: feat_jerk
+[21:31:40] DONE: feat_jerk - MSE: 0.025783 (5.0s)
+[21:31:40] START: feat_critical_frames
+[21:31:45] DONE: feat_critical_frames - MSE: 0.022122 (5.6s)
+[21:31:45] START: feat_fft
+[21:31:54] DONE: feat_fft - MSE: 0.029095 (8.4s)
+[21:31:54] START: feat_geometric
+[21:31:59] DONE: feat_geometric - MSE: 0.022914 (5.4s)
+[21:31:59] START: feat_pca_50
+[21:32:04] DONE: feat_pca_50 - MSE: 0.027798 (4.6s)
+[21:32:04] START: feat_pca_100
+[21:32:09] DONE: feat_pca_100 - MSE: 0.027364 (5.1s)
+[21:32:09] Phase Phase 2 complete:
+[21:32:09]   Completed: 9/9
+[21:32:09]   Best: feat_f4_hybrid = 0.018416
+[21:32:09] ============================================================
+[21:32:09] PHASE: Phase 3: Feature Combinations (8 experiments)
+[21:32:09] ============================================================
+[21:32:09] START: combo_f4_velocity
+[21:32:18] DONE: combo_f4_velocity - MSE: 0.019521 (9.1s)
+[21:32:18] START: combo_f4_critical
+[21:32:27] DONE: combo_f4_critical - MSE: 0.016169 (8.6s)
+[21:32:27] START: combo_f4_fft
+[21:32:37] DONE: combo_f4_fft - MSE: 0.017936 (10.5s)
+[21:32:37] START: combo_f4_geometric
+[21:32:46] DONE: combo_f4_geometric - MSE: 0.015741 (8.4s)
+[21:32:46] START: combo_f4_velocity_fft
+[21:32:58] DONE: combo_f4_velocity_fft - MSE: 0.018882 (12.2s)
+[21:32:58] START: combo_f4_geometric_fft
+[21:33:09] DONE: combo_f4_geometric_fft - MSE: 0.016299 (11.5s)
+[21:33:09] START: combo_f4_velocity_geometric_fft
+[21:33:22] DONE: combo_f4_velocity_geometric_fft - MSE: 0.017362 (13.0s)
+[21:33:22] START: combo_all_per_player
+[21:33:35] DONE: combo_all_per_player - MSE: 0.017362 (12.8s)
+[21:33:35] Phase Phase 3 complete:
+[21:33:35]   Completed: 8/8
+[21:33:35]   Best: combo_f4_geometric = 0.015741
+[21:33:35] ============================================================
+[21:33:35] PHASE: Phase 4: Model Types (8 experiments)
+[21:33:35] ============================================================
+[21:33:35] START: model_lgbm_default
+[21:33:42] DONE: model_lgbm_default - MSE: 0.018416 (6.6s)
+[21:33:42] START: model_lgbm_conservative
+[21:33:46] DONE: model_lgbm_conservative - MSE: 0.016844 (4.5s)
+[21:33:46] START: model_ridge
+[21:33:46] DONE: model_ridge - MSE: 0.061903 (0.0s)
+[21:33:46] START: model_ridge_cv
+[21:33:46] DONE: model_ridge_cv - MSE: 0.024364 (0.1s)
+[21:33:46] START: model_elasticnet
+[21:33:46] DONE: model_elasticnet - MSE: 0.017308 (0.0s)
+[21:33:46] START: model_knn_5
+[21:33:47] DONE: model_knn_5 - MSE: 0.025430 (0.2s)
+[21:33:47] START: model_knn_10
+[21:33:47] DONE: model_knn_10 - MSE: 0.023961 (0.0s)
+[21:33:47] START: model_random_forest
+[21:33:51] DONE: model_random_forest - MSE: 0.014563 (4.0s)
+[21:33:51] START: model_xgboost
+[21:34:00] DONE: model_xgboost - MSE: 0.017224 (9.0s)
+[21:34:00] START: model_catboost
+[21:34:19] DONE: model_catboost - MSE: 0.016442 (19.2s)
+[21:34:19] Phase Phase 4 complete:
+[21:34:19]   Completed: 10/10
+[21:34:19]   Best: model_random_forest = 0.014563
+[21:34:19] ============================================================
+[21:34:19] PHASE: Phase 5: Target Transforms (5 experiments)
+[21:34:19] ============================================================
+[21:34:19] START: target_raw
+[21:34:25] DONE: target_raw - MSE: 0.018416 (6.7s)
+[21:34:25] START: target_log_angle
+[21:34:32] DONE: target_log_angle - MSE: 0.018603 (6.8s)
+[21:34:32] START: target_quantile
+[21:34:39] DONE: target_quantile - MSE: 0.017559 (6.9s)
+[21:34:39] START: target_per_target_features
+[21:34:45] DONE: target_per_target_features - MSE: 0.020128 (6.1s)
+[21:34:45] START: target_with_interactions
+[21:34:52] DONE: target_with_interactions - MSE: 0.018416 (6.6s)
+[21:34:52] Phase Phase 5 complete:
+[21:34:52]   Completed: 5/5
+[21:34:52]   Best: target_quantile = 0.017559
+[21:34:52] ============================================================
+[21:34:52] PHASE: Phase 6: Deep Learning (5 experiments)
+[21:34:52] ============================================================
+[21:34:52] Using device: mps
+[21:34:52] START: dl_attention

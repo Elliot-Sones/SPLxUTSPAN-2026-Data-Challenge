@@ -1,0 +1,380 @@
+[2026-01-28 21:25:45] INFO: ============================================================
+[2026-01-28 21:25:45] INFO: Comprehensive Overnight Experiment System v3
+[2026-01-28 21:25:45] INFO: ============================================================
+[2026-01-28 21:25:45] INFO: Output directory: /Users/elliot18/Desktop/Home/Projects/SPLxUTSPAN-2026-Data-Challenge/output/overnight
+[2026-01-28 21:25:45] INFO: Resume mode: True
+[2026-01-28 21:25:45] INFO: Validation mode: running Phase 1 only
+[2026-01-28 21:25:59] INFO: ============================================================
+[2026-01-28 21:25:59] INFO: PHASE: Phase 1: Baselines (4 experiments)
+[2026-01-28 21:25:59] INFO: ============================================================
+[2026-01-28 21:25:59] INFO: START: baseline_f4_global
+[2026-01-28 21:26:06] INFO: DONE: baseline_f4_global - MSE: 0.018416 (7.1s)
+[2026-01-28 21:26:06] INFO: START: baseline_f4_per_player
+[2026-01-28 21:26:12] INFO: DONE: baseline_f4_per_player - MSE: 0.018416 (6.6s)
+[2026-01-28 21:26:12] INFO: START: baseline_raw_ridge
+[2026-01-28 21:26:14] INFO: DONE: baseline_raw_ridge - MSE: 0.082032 (1.4s)
+[2026-01-28 21:26:14] INFO: START: baseline_pca50_ridge
+[2026-01-28 21:26:14] INFO: DONE: baseline_pca50_ridge - MSE: 0.099074 (0.3s)
+[2026-01-28 21:26:14] INFO: Phase Phase 1 complete:
+[2026-01-28 21:26:14] INFO:   Completed: 4/4
+[2026-01-28 21:26:14] INFO:   Best: baseline_f4_global = 0.018416
+[2026-01-28 21:26:14] INFO: ============================================================
+[2026-01-28 21:26:14] INFO: FINAL SUMMARY
+[2026-01-28 21:26:14] INFO: ============================================================
+[2026-01-28 21:26:14] INFO: Total experiments: 4
+[2026-01-28 21:26:14] INFO: Successful: 4
+[2026-01-28 21:26:14] INFO: Total time: 0.0 hours
+[2026-01-28 21:26:14] INFO: 
+Best experiment: baseline_f4_global
+[2026-01-28 21:26:14] INFO:   Total MSE: 0.018416
+[2026-01-28 21:26:14] INFO:   Angle MSE: 0.007156
+[2026-01-28 21:26:14] INFO:   Depth MSE: 0.029802
+[2026-01-28 21:26:14] INFO:   Left/Right MSE: 0.018291
+[2026-01-28 21:26:14] INFO:   Features: f4_hybrid
+[2026-01-28 21:26:14] INFO:   Model: lgbm
+[2026-01-28 21:26:14] INFO: 
+Results saved to: /Users/elliot18/Desktop/Home/Projects/SPLxUTSPAN-2026-Data-Challenge/output/overnight/overnight_v3_results.csv
+[2026-01-28 21:26:25] INFO: Loaded checkpoint: 4 completed
+[2026-01-28 21:26:25] INFO: ============================================================
+[2026-01-28 21:26:25] INFO: Comprehensive Overnight Experiment System v3
+[2026-01-28 21:26:25] INFO: ============================================================
+[2026-01-28 21:26:25] INFO: Output directory: /Users/elliot18/Desktop/Home/Projects/SPLxUTSPAN-2026-Data-Challenge/output/overnight
+[2026-01-28 21:26:25] INFO: Resume mode: True
+[2026-01-28 21:26:25] INFO: Running Phase 2 only
+[2026-01-28 21:26:39] INFO: ============================================================
+[2026-01-28 21:26:39] INFO: PHASE: Phase 2: Feature Types (9 experiments)
+[2026-01-28 21:26:39] INFO: ============================================================
+[2026-01-28 21:26:39] INFO: START: feat_f4_hybrid
+[2026-01-28 21:26:46] INFO: DONE: feat_f4_hybrid - MSE: 0.018416 (6.7s)
+[2026-01-28 21:26:46] INFO: START: feat_velocity
+[2026-01-28 21:26:53] INFO: DONE: feat_velocity - MSE: 0.031639 (7.5s)
+[2026-01-28 21:26:53] INFO: START: feat_acceleration
+[2026-01-28 21:27:02] INFO: DONE: feat_acceleration - MSE: 0.024771 (8.7s)
+[2026-01-28 21:27:02] INFO: START: feat_jerk
+[2026-01-28 21:27:09] INFO: DONE: feat_jerk - MSE: 0.025783 (7.3s)
+[2026-01-28 21:27:09] INFO: START: feat_critical_frames
+[2026-01-28 21:27:15] INFO: DONE: feat_critical_frames - MSE: 0.022122 (5.9s)
+[2026-01-28 21:27:15] INFO: START: feat_fft
+[2026-01-28 21:27:24] INFO: DONE: feat_fft - MSE: 0.029095 (9.6s)
+[2026-01-28 21:27:24] INFO: START: feat_geometric
+[2026-01-28 21:27:30] INFO: DONE: feat_geometric - MSE: 0.022914 (5.9s)
+[2026-01-28 21:27:30] INFO: START: feat_pca_50
+[2026-01-28 21:27:35] INFO: DONE: feat_pca_50 - MSE: 0.027798 (4.7s)
+[2026-01-28 21:27:35] INFO: START: feat_pca_100
+[2026-01-28 21:27:40] INFO: DONE: feat_pca_100 - MSE: 0.027364 (5.3s)
+[2026-01-28 21:27:40] INFO: Phase Phase 2 complete:
+[2026-01-28 21:27:40] INFO:   Completed: 9/9
+[2026-01-28 21:27:40] INFO:   Best: feat_f4_hybrid = 0.018416
+[2026-01-28 21:27:40] INFO: ============================================================
+[2026-01-28 21:27:40] INFO: FINAL SUMMARY
+[2026-01-28 21:27:40] INFO: ============================================================
+[2026-01-28 21:27:40] INFO: Total experiments: 9
+[2026-01-28 21:27:40] INFO: Successful: 9
+[2026-01-28 21:27:40] INFO: Total time: 0.0 hours
+[2026-01-28 21:27:40] INFO: 
+Best experiment: feat_f4_hybrid
+[2026-01-28 21:27:40] INFO:   Total MSE: 0.018416
+[2026-01-28 21:27:40] INFO:   Angle MSE: 0.007156
+[2026-01-28 21:27:40] INFO:   Depth MSE: 0.029802
+[2026-01-28 21:27:40] INFO:   Left/Right MSE: 0.018291
+[2026-01-28 21:27:40] INFO:   Features: f4_hybrid
+[2026-01-28 21:27:40] INFO:   Model: lgbm
+[2026-01-28 21:27:40] INFO: 
+Results saved to: /Users/elliot18/Desktop/Home/Projects/SPLxUTSPAN-2026-Data-Challenge/output/overnight/overnight_v3_results.csv
+[2026-01-28 21:27:55] INFO: Loaded checkpoint: 13 completed
+[2026-01-28 21:27:55] INFO: ============================================================
+[2026-01-28 21:27:55] INFO: Comprehensive Overnight Experiment System v3
+[2026-01-28 21:27:55] INFO: ============================================================
+[2026-01-28 21:27:55] INFO: Output directory: /Users/elliot18/Desktop/Home/Projects/SPLxUTSPAN-2026-Data-Challenge/output/overnight
+[2026-01-28 21:27:55] INFO: Resume mode: True
+[2026-01-28 21:27:55] INFO: Running Phase 3 only
+[2026-01-28 21:28:09] INFO: ============================================================
+[2026-01-28 21:28:09] INFO: PHASE: Phase 3: Feature Combinations (8 experiments)
+[2026-01-28 21:28:09] INFO: ============================================================
+[2026-01-28 21:28:09] INFO: START: combo_f4_velocity
+[2026-01-28 21:28:18] INFO: DONE: combo_f4_velocity - MSE: 0.019521 (8.7s)
+[2026-01-28 21:28:18] INFO: START: combo_f4_critical
+[2026-01-28 21:28:26] INFO: DONE: combo_f4_critical - MSE: 0.016169 (8.1s)
+[2026-01-28 21:28:26] INFO: START: combo_f4_fft
+[2026-01-28 21:28:36] INFO: DONE: combo_f4_fft - MSE: 0.017936 (10.0s)
+[2026-01-28 21:28:36] INFO: START: combo_f4_geometric
+[2026-01-28 21:28:43] INFO: DONE: combo_f4_geometric - MSE: 0.015741 (7.9s)
+[2026-01-28 21:28:43] INFO: START: combo_f4_velocity_fft
+[2026-01-28 21:28:55] INFO: DONE: combo_f4_velocity_fft - MSE: 0.018882 (11.7s)
+[2026-01-28 21:28:55] INFO: START: combo_f4_geometric_fft
+[2026-01-28 21:29:06] INFO: DONE: combo_f4_geometric_fft - MSE: 0.016299 (10.9s)
+[2026-01-28 21:29:06] INFO: START: combo_f4_velocity_geometric_fft
+[2026-01-28 21:29:19] INFO: DONE: combo_f4_velocity_geometric_fft - MSE: 0.017362 (12.7s)
+[2026-01-28 21:29:19] INFO: START: combo_all_per_player
+[2026-01-28 21:29:31] INFO: DONE: combo_all_per_player - MSE: 0.017362 (12.6s)
+[2026-01-28 21:29:31] INFO: Phase Phase 3 complete:
+[2026-01-28 21:29:31] INFO:   Completed: 8/8
+[2026-01-28 21:29:31] INFO:   Best: combo_f4_geometric = 0.015741
+[2026-01-28 21:29:31] INFO: ============================================================
+[2026-01-28 21:29:31] INFO: FINAL SUMMARY
+[2026-01-28 21:29:31] INFO: ============================================================
+[2026-01-28 21:29:31] INFO: Total experiments: 8
+[2026-01-28 21:29:31] INFO: Successful: 8
+[2026-01-28 21:29:31] INFO: Total time: 0.0 hours
+[2026-01-28 21:29:31] INFO: 
+Best experiment: combo_f4_geometric
+[2026-01-28 21:29:31] INFO:   Total MSE: 0.015741
+[2026-01-28 21:29:31] INFO:   Angle MSE: 0.007456
+[2026-01-28 21:29:31] INFO:   Depth MSE: 0.021336
+[2026-01-28 21:29:31] INFO:   Left/Right MSE: 0.018430
+[2026-01-28 21:29:31] INFO:   Features: f4_hybrid+geometric
+[2026-01-28 21:29:31] INFO:   Model: lgbm
+[2026-01-28 21:29:31] INFO: 
+Results saved to: /Users/elliot18/Desktop/Home/Projects/SPLxUTSPAN-2026-Data-Challenge/output/overnight/overnight_v3_results.csv
+[2026-01-28 21:30:46] INFO: ============================================================
+[2026-01-28 21:30:46] INFO: Comprehensive Overnight Experiment System v3
+[2026-01-28 21:30:46] INFO: ============================================================
+[2026-01-28 21:30:46] INFO: Output directory: /Users/elliot18/Desktop/Home/Projects/SPLxUTSPAN-2026-Data-Challenge/output/overnight
+[2026-01-28 21:30:46] INFO: Resume mode: False
+[2026-01-28 21:31:00] INFO: ============================================================
+[2026-01-28 21:31:00] INFO: PHASE: Phase 1: Baselines (4 experiments)
+[2026-01-28 21:31:00] INFO: ============================================================
+[2026-01-28 21:31:00] INFO: START: baseline_f4_global
+[2026-01-28 21:31:07] INFO: DONE: baseline_f4_global - MSE: 0.018416 (7.0s)
+[2026-01-28 21:31:07] INFO: START: baseline_f4_per_player
+[2026-01-28 21:31:14] INFO: DONE: baseline_f4_per_player - MSE: 0.018416 (6.7s)
+[2026-01-28 21:31:14] INFO: START: baseline_raw_ridge
+[2026-01-28 21:31:15] INFO: DONE: baseline_raw_ridge - MSE: 0.082032 (1.3s)
+[2026-01-28 21:31:15] INFO: START: baseline_pca50_ridge
+[2026-01-28 21:31:15] INFO: DONE: baseline_pca50_ridge - MSE: 0.099074 (0.0s)
+[2026-01-28 21:31:15] INFO: Phase Phase 1 complete:
+[2026-01-28 21:31:15] INFO:   Completed: 4/4
+[2026-01-28 21:31:15] INFO:   Best: baseline_f4_global = 0.018416
+[2026-01-28 21:31:15] INFO: ============================================================
+[2026-01-28 21:31:15] INFO: PHASE: Phase 2: Feature Types (9 experiments)
+[2026-01-28 21:31:15] INFO: ============================================================
+[2026-01-28 21:31:15] INFO: START: feat_f4_hybrid
+[2026-01-28 21:31:22] INFO: DONE: feat_f4_hybrid - MSE: 0.018416 (6.8s)
+[2026-01-28 21:31:22] INFO: START: feat_velocity
+[2026-01-28 21:31:29] INFO: DONE: feat_velocity - MSE: 0.031639 (6.4s)
+[2026-01-28 21:31:29] INFO: START: feat_acceleration
+[2026-01-28 21:31:35] INFO: DONE: feat_acceleration - MSE: 0.024771 (6.2s)
+[2026-01-28 21:31:35] INFO: START: feat_jerk
+[2026-01-28 21:31:40] INFO: DONE: feat_jerk - MSE: 0.025783 (5.0s)
+[2026-01-28 21:31:40] INFO: START: feat_critical_frames
+[2026-01-28 21:31:45] INFO: DONE: feat_critical_frames - MSE: 0.022122 (5.6s)
+[2026-01-28 21:31:45] INFO: START: feat_fft
+[2026-01-28 21:31:54] INFO: DONE: feat_fft - MSE: 0.029095 (8.4s)
+[2026-01-28 21:31:54] INFO: START: feat_geometric
+[2026-01-28 21:31:59] INFO: DONE: feat_geometric - MSE: 0.022914 (5.4s)
+[2026-01-28 21:31:59] INFO: START: feat_pca_50
+[2026-01-28 21:32:04] INFO: DONE: feat_pca_50 - MSE: 0.027798 (4.6s)
+[2026-01-28 21:32:04] INFO: START: feat_pca_100
+[2026-01-28 21:32:09] INFO: DONE: feat_pca_100 - MSE: 0.027364 (5.1s)
+[2026-01-28 21:32:09] INFO: Phase Phase 2 complete:
+[2026-01-28 21:32:09] INFO:   Completed: 9/9
+[2026-01-28 21:32:09] INFO:   Best: feat_f4_hybrid = 0.018416
+[2026-01-28 21:32:09] INFO: ============================================================
+[2026-01-28 21:32:09] INFO: PHASE: Phase 3: Feature Combinations (8 experiments)
+[2026-01-28 21:32:09] INFO: ============================================================
+[2026-01-28 21:32:09] INFO: START: combo_f4_velocity
+[2026-01-28 21:32:18] INFO: DONE: combo_f4_velocity - MSE: 0.019521 (9.1s)
+[2026-01-28 21:32:18] INFO: START: combo_f4_critical
+[2026-01-28 21:32:27] INFO: DONE: combo_f4_critical - MSE: 0.016169 (8.6s)
+[2026-01-28 21:32:27] INFO: START: combo_f4_fft
+[2026-01-28 21:32:37] INFO: DONE: combo_f4_fft - MSE: 0.017936 (10.5s)
+[2026-01-28 21:32:37] INFO: START: combo_f4_geometric
+[2026-01-28 21:32:46] INFO: DONE: combo_f4_geometric - MSE: 0.015741 (8.4s)
+[2026-01-28 21:32:46] INFO: START: combo_f4_velocity_fft
+[2026-01-28 21:32:58] INFO: DONE: combo_f4_velocity_fft - MSE: 0.018882 (12.2s)
+[2026-01-28 21:32:58] INFO: START: combo_f4_geometric_fft
+[2026-01-28 21:33:09] INFO: DONE: combo_f4_geometric_fft - MSE: 0.016299 (11.5s)
+[2026-01-28 21:33:09] INFO: START: combo_f4_velocity_geometric_fft
+[2026-01-28 21:33:22] INFO: DONE: combo_f4_velocity_geometric_fft - MSE: 0.017362 (13.0s)
+[2026-01-28 21:33:22] INFO: START: combo_all_per_player
+[2026-01-28 21:33:35] INFO: DONE: combo_all_per_player - MSE: 0.017362 (12.8s)
+[2026-01-28 21:33:35] INFO: Phase Phase 3 complete:
+[2026-01-28 21:33:35] INFO:   Completed: 8/8
+[2026-01-28 21:33:35] INFO:   Best: combo_f4_geometric = 0.015741
+[2026-01-28 21:33:35] INFO: ============================================================
+[2026-01-28 21:33:35] INFO: PHASE: Phase 4: Model Types (8 experiments)
+[2026-01-28 21:33:35] INFO: ============================================================
+[2026-01-28 21:33:35] INFO: START: model_lgbm_default
+[2026-01-28 21:33:42] INFO: DONE: model_lgbm_default - MSE: 0.018416 (6.6s)
+[2026-01-28 21:33:42] INFO: START: model_lgbm_conservative
+[2026-01-28 21:33:46] INFO: DONE: model_lgbm_conservative - MSE: 0.016844 (4.5s)
+[2026-01-28 21:33:46] INFO: START: model_ridge
+[2026-01-28 21:33:46] INFO: DONE: model_ridge - MSE: 0.061903 (0.0s)
+[2026-01-28 21:33:46] INFO: START: model_ridge_cv
+[2026-01-28 21:33:46] INFO: DONE: model_ridge_cv - MSE: 0.024364 (0.1s)
+[2026-01-28 21:33:46] INFO: START: model_elasticnet
+[2026-01-28 21:33:46] INFO: DONE: model_elasticnet - MSE: 0.017308 (0.0s)
+[2026-01-28 21:33:46] INFO: START: model_knn_5
+[2026-01-28 21:33:47] INFO: DONE: model_knn_5 - MSE: 0.025430 (0.2s)
+[2026-01-28 21:33:47] INFO: START: model_knn_10
+[2026-01-28 21:33:47] INFO: DONE: model_knn_10 - MSE: 0.023961 (0.0s)
+[2026-01-28 21:33:47] INFO: START: model_random_forest
+[2026-01-28 21:33:51] INFO: DONE: model_random_forest - MSE: 0.014563 (4.0s)
+[2026-01-28 21:33:51] INFO: START: model_xgboost
+[2026-01-28 21:34:00] INFO: DONE: model_xgboost - MSE: 0.017224 (9.0s)
+[2026-01-28 21:34:00] INFO: START: model_catboost
+[2026-01-28 21:34:19] INFO: DONE: model_catboost - MSE: 0.016442 (19.2s)
+[2026-01-28 21:34:19] INFO: Phase Phase 4 complete:
+[2026-01-28 21:34:19] INFO:   Completed: 10/10
+[2026-01-28 21:34:19] INFO:   Best: model_random_forest = 0.014563
+[2026-01-28 21:34:19] INFO: ============================================================
+[2026-01-28 21:34:19] INFO: PHASE: Phase 5: Target Transforms (5 experiments)
+[2026-01-28 21:34:19] INFO: ============================================================
+[2026-01-28 21:34:19] INFO: START: target_raw
+[2026-01-28 21:34:25] INFO: DONE: target_raw - MSE: 0.018416 (6.7s)
+[2026-01-28 21:34:25] INFO: START: target_log_angle
+[2026-01-28 21:34:32] INFO: DONE: target_log_angle - MSE: 0.018603 (6.8s)
+[2026-01-28 21:34:32] INFO: START: target_quantile
+[2026-01-28 21:34:39] INFO: DONE: target_quantile - MSE: 0.017559 (6.9s)
+[2026-01-28 21:34:39] INFO: START: target_per_target_features
+[2026-01-28 21:34:45] INFO: DONE: target_per_target_features - MSE: 0.020128 (6.1s)
+[2026-01-28 21:34:45] INFO: START: target_with_interactions
+[2026-01-28 21:34:52] INFO: DONE: target_with_interactions - MSE: 0.018416 (6.6s)
+[2026-01-28 21:34:52] INFO: Phase Phase 5 complete:
+[2026-01-28 21:34:52] INFO:   Completed: 5/5
+[2026-01-28 21:34:52] INFO:   Best: target_quantile = 0.017559
+[2026-01-28 21:34:52] INFO: ============================================================
+[2026-01-28 21:34:52] INFO: PHASE: Phase 6: Deep Learning (5 experiments)
+[2026-01-28 21:34:52] INFO: ============================================================
+[2026-01-28 21:34:52] INFO: Using device: mps
+[2026-01-28 21:34:52] INFO: START: dl_attention
+[2026-01-28 21:47:04] INFO: Loaded checkpoint: 36 completed
+[2026-01-28 21:47:17] INFO: ============================================================
+[2026-01-28 21:47:17] INFO: PHASE: Phase 7: Stacking (4 experiments)
+[2026-01-28 21:47:17] INFO: ============================================================
+[2026-01-28 21:47:17] INFO: START: stack_trees
+[2026-01-28 21:47:50] INFO: Loaded checkpoint: 36 completed
+[2026-01-28 21:47:50] INFO: ============================================================
+[2026-01-28 21:47:50] INFO: Comprehensive Overnight Experiment System v3
+[2026-01-28 21:47:50] INFO: ============================================================
+[2026-01-28 21:47:50] INFO: Output directory: /Users/elliot18/Desktop/Home/Projects/SPLxUTSPAN-2026-Data-Challenge/output/overnight
+[2026-01-28 21:47:50] INFO: Resume mode: True
+[2026-01-28 21:47:50] INFO: Running Phase 7 only
+[2026-01-28 21:48:06] INFO: ============================================================
+[2026-01-28 21:48:06] INFO: PHASE: Phase 7: Stacking (4 experiments)
+[2026-01-28 21:48:06] INFO: ============================================================
+[2026-01-28 21:48:06] INFO: START: stack_trees
+[2026-01-28 21:48:54] INFO: DONE: stack_trees - MSE: 0.016786 (97.2s)
+[2026-01-28 21:48:54] INFO: START: stack_trees_ridge
+[2026-01-28 21:49:35] INFO: DONE: stack_trees_ridge - MSE: 0.013033 (40.8s)
+[2026-01-28 21:49:35] INFO: START: optimized_blend
+[2026-01-28 21:49:58] INFO: DONE: stack_trees - MSE: 0.016786 (111.5s)
+[2026-01-28 21:49:58] INFO: START: stack_trees_ridge
+[2026-01-28 21:50:10] INFO: DONE: optimized_blend - MSE: 0.000517 (35.2s)
+[2026-01-28 21:50:10] INFO: START: simple_blend
+[2026-01-28 21:50:27] INFO: DONE: stack_trees_ridge - MSE: 0.013033 (28.9s)
+[2026-01-28 21:50:27] INFO: START: optimized_blend
+[2026-01-28 21:50:39] INFO: DONE: simple_blend - MSE: 0.020307 (28.7s)
+[2026-01-28 21:50:39] INFO: Phase Phase 7 complete:
+[2026-01-28 21:50:39] INFO:   Completed: 4/4
+[2026-01-28 21:50:39] INFO:   Best: optimized_blend = 0.000517
+[2026-01-28 21:50:39] INFO: ============================================================
+[2026-01-28 21:50:39] INFO: PHASE: Phase 8: Per-Target Tuning (4 experiments)
+[2026-01-28 21:50:39] INFO: ============================================================
+[2026-01-28 21:50:39] INFO: START: tuned_angle
+[2026-01-28 21:50:55] INFO: DONE: optimized_blend - MSE: 0.000517 (28.1s)
+[2026-01-28 21:50:55] INFO: START: simple_blend
+[2026-01-28 21:51:21] INFO: DONE: simple_blend - MSE: 0.020307 (26.6s)
+[2026-01-28 21:51:21] INFO: Phase Phase 7 complete:
+[2026-01-28 21:51:21] INFO:   Completed: 4/4
+[2026-01-28 21:51:21] INFO:   Best: optimized_blend = 0.000517
+[2026-01-28 21:51:21] INFO: ============================================================
+[2026-01-28 21:51:21] INFO: FINAL SUMMARY
+[2026-01-28 21:51:21] INFO: ============================================================
+[2026-01-28 21:51:21] INFO: Total experiments: 4
+[2026-01-28 21:51:21] INFO: Successful: 4
+[2026-01-28 21:51:21] INFO: Total time: 0.1 hours
+[2026-01-28 21:51:21] INFO: 
+Best experiment: optimized_blend
+[2026-01-28 21:51:21] INFO:   Total MSE: 0.000517
+[2026-01-28 21:51:21] INFO:   Angle MSE: 0.000001
+[2026-01-28 21:51:21] INFO:   Depth MSE: 0.000706
+[2026-01-28 21:51:21] INFO:   Left/Right MSE: 0.000843
+[2026-01-28 21:51:21] INFO:   Features: f4_hybrid
+[2026-01-28 21:51:21] INFO:   Model: optimized_blend
+[2026-01-28 21:51:21] INFO: 
+Results saved to: /Users/elliot18/Desktop/Home/Projects/SPLxUTSPAN-2026-Data-Challenge/output/overnight/overnight_v3_results.csv
+[2026-01-28 21:51:53] INFO: Loaded checkpoint: 40 completed
+[2026-01-28 21:51:53] INFO: ============================================================
+[2026-01-28 21:51:53] INFO: Comprehensive Overnight Experiment System v3
+[2026-01-28 21:51:53] INFO: ============================================================
+[2026-01-28 21:51:53] INFO: Output directory: /Users/elliot18/Desktop/Home/Projects/SPLxUTSPAN-2026-Data-Challenge/output/overnight
+[2026-01-28 21:51:53] INFO: Resume mode: True
+[2026-01-28 21:51:53] INFO: Running Phase 8 only
+[2026-01-28 21:51:56] INFO: DONE: tuned_angle - MSE: 0.018037 (76.5s)
+[2026-01-28 21:51:56] INFO: START: tuned_depth
+[2026-01-28 21:52:08] INFO: ============================================================
+[2026-01-28 21:52:08] INFO: PHASE: Phase 8: Per-Target Tuning (4 experiments)
+[2026-01-28 21:52:08] INFO: ============================================================
+[2026-01-28 21:52:08] INFO: START: tuned_angle
+[2026-01-28 21:53:08] INFO: DONE: tuned_depth - MSE: 0.016362 (72.2s)
+[2026-01-28 21:53:08] INFO: START: tuned_left_right
+[2026-01-28 21:53:34] INFO: DONE: tuned_angle - MSE: 0.016624 (85.5s)
+[2026-01-28 21:53:34] INFO: START: tuned_depth
+[2026-01-28 21:54:33] INFO: DONE: tuned_left_right - MSE: 0.015409 (85.0s)
+[2026-01-28 21:54:33] INFO: START: tuned_combined
+[2026-01-28 21:54:42] INFO: DONE: tuned_combined - MSE: 0.018416 (9.6s)
+[2026-01-28 21:54:42] INFO: Phase Phase 8 complete:
+[2026-01-28 21:54:42] INFO:   Completed: 4/4
+[2026-01-28 21:54:42] INFO:   Best: tuned_left_right = 0.015409
+[2026-01-28 21:54:42] INFO: ============================================================
+[2026-01-28 21:54:42] INFO: PHASE: Phase 9: Analysis (4 experiments)
+[2026-01-28 21:54:42] INFO: ============================================================
+[2026-01-28 21:54:42] INFO: START: feature_importance
+[2026-01-28 21:54:45] INFO: DONE: feature_importance - MSE: 0.000000 (2.5s)
+[2026-01-28 21:54:45] INFO: START: model_correlation
+[2026-01-28 21:54:47] INFO: DONE: tuned_depth - MSE: 0.015813 (73.3s)
+[2026-01-28 21:54:47] INFO: START: tuned_left_right
+[2026-01-28 21:54:55] INFO: DONE: model_correlation - MSE: 0.000000 (9.9s)
+[2026-01-28 21:54:55] INFO: START: participant_analysis
+[2026-01-28 21:55:05] INFO: DONE: participant_analysis - MSE: 0.000000 (10.2s)
+[2026-01-28 21:55:05] INFO: START: error_analysis
+[2026-01-28 21:55:15] INFO: DONE: error_analysis - MSE: 0.000000 (9.8s)
+[2026-01-28 21:55:15] INFO: Phase Phase 9 complete:
+[2026-01-28 21:55:15] INFO:   Completed: 4/4
+[2026-01-28 21:55:15] INFO:   Best: feature_importance = 0.000000
+[2026-01-28 21:55:46] INFO: DONE: tuned_left_right - MSE: 0.016877 (58.6s)
+[2026-01-28 21:55:46] INFO: START: tuned_combined
+[2026-01-28 21:55:52] INFO: DONE: tuned_combined - MSE: 0.018416 (6.5s)
+[2026-01-28 21:55:52] INFO: Phase Phase 8 complete:
+[2026-01-28 21:55:52] INFO:   Completed: 4/4
+[2026-01-28 21:55:52] INFO:   Best: tuned_depth = 0.015813
+[2026-01-28 21:55:52] INFO: ============================================================
+[2026-01-28 21:55:52] INFO: FINAL SUMMARY
+[2026-01-28 21:55:52] INFO: ============================================================
+[2026-01-28 21:55:52] INFO: Total experiments: 4
+[2026-01-28 21:55:52] INFO: Successful: 4
+[2026-01-28 21:55:52] INFO: Total time: 0.1 hours
+[2026-01-28 21:55:52] INFO: 
+Best experiment: tuned_depth
+[2026-01-28 21:55:52] INFO:   Total MSE: 0.015813
+[2026-01-28 21:55:52] INFO:   Angle MSE: 0.013744
+[2026-01-28 21:55:52] INFO:   Depth MSE: 0.018219
+[2026-01-28 21:55:52] INFO:   Left/Right MSE: 0.015476
+[2026-01-28 21:55:52] INFO:   Features: f4_hybrid
+[2026-01-28 21:55:52] INFO:   Model: lgbm_optuna
+[2026-01-28 21:55:52] INFO: 
+Results saved to: /Users/elliot18/Desktop/Home/Projects/SPLxUTSPAN-2026-Data-Challenge/output/overnight/overnight_v3_results.csv
+[2026-01-28 21:56:30] INFO: Loaded checkpoint: 44 completed
+[2026-01-28 21:56:30] INFO: ============================================================
+[2026-01-28 21:56:30] INFO: Comprehensive Overnight Experiment System v3
+[2026-01-28 21:56:30] INFO: ============================================================
+[2026-01-28 21:56:30] INFO: Output directory: /Users/elliot18/Desktop/Home/Projects/SPLxUTSPAN-2026-Data-Challenge/output/overnight
+[2026-01-28 21:56:30] INFO: Resume mode: True
+[2026-01-28 21:56:30] INFO: Running Phase 9 only
+[2026-01-28 21:56:44] INFO: ============================================================
+[2026-01-28 21:56:44] INFO: PHASE: Phase 9: Analysis (4 experiments)
+[2026-01-28 21:56:44] INFO: ============================================================
+[2026-01-28 21:56:44] INFO: SKIP (completed): feature_importance
+[2026-01-28 21:56:44] INFO: SKIP (completed): model_correlation
+[2026-01-28 21:56:44] INFO: SKIP (completed): participant_analysis
+[2026-01-28 21:56:44] INFO: SKIP (completed): error_analysis
+[2026-01-28 21:56:44] INFO: Phase Phase 9 complete: no valid results
+[2026-01-28 21:56:44] INFO: ============================================================
+[2026-01-28 21:56:44] INFO: FINAL SUMMARY
+[2026-01-28 21:56:44] INFO: ============================================================
+[2026-01-28 21:56:44] INFO: Total experiments: 4
+[2026-01-28 21:56:44] INFO: Successful: 0
+[2026-01-28 21:56:44] INFO: Total time: 0.0 hours
+[2026-01-28 21:56:44] INFO: 
+Results saved to: /Users/elliot18/Desktop/Home/Projects/SPLxUTSPAN-2026-Data-Challenge/output/overnight/overnight_v3_results.csv
