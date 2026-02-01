@@ -1,0 +1,76 @@
+test,target,player,best_r2,best_feature,best_frame
+position_only,angle,1,0.1963278138419129,left_second_finger_distal,115
+position_only,angle,2,0.17311630553424706,left_fifth_finger_distal,105
+position_only,angle,3,0.11061795796768925,right_ankle,175
+position_only,angle,4,0.19771814873507665,left_ear,195
+position_only,angle,5,0.11577909153039367,left_fourth_finger_distal,150
+position_only,depth,1,0.4600394368431262,left_ear,145
+position_only,depth,2,0.5120579564428167,right_fifth_finger_pip,95
+position_only,depth,3,0.36437689120027106,left_third_finger_pip,110
+position_only,depth,4,0.490837211762048,nose,120
+position_only,depth,5,0.7281245578641937,right_second_finger_mcp,145
+position_only,left_right,1,0.44744868791068604,left_fifth_finger_mcp,175
+position_only,left_right,2,0.6041138451697324,right_wrist,140
+position_only,left_right,3,0.35174474534300804,left_elbow,175
+position_only,left_right,4,0.34535337968841073,right_first_finger_cmc,195
+position_only,left_right,5,0.36135598188098206,right_fifth_finger_pip,190
+velocity,angle,1,0.21429627413211716,right_second_finger_distal_vel_w10,160
+velocity,angle,2,0.20638845047168364,left_small_toe_vel_w10,90
+velocity,angle,3,0.18848405615482644,left_fourth_finger_distal_vel_w5,105
+velocity,angle,4,0.2854916748783045,left_shoulder_vel_w10,185
+velocity,angle,5,0.11871694086749307,left_big_toe_vel_w5,115
+velocity,depth,1,0.5795874226540585,right_fifth_finger_distal_vel_w5,155
+velocity,depth,2,0.5420095432799262,right_elbow_vel_w10,95
+velocity,depth,3,0.5185029333060274,left_ankle_vel_w2,130
+velocity,depth,4,0.5698220316869984,right_ear_vel_w5,150
+velocity,depth,5,0.7046083487910768,left_shoulder_vel_w10,150
+velocity,left_right,1,0.49924156256750896,right_knee_vel_w10,175
+velocity,left_right,2,0.5754171086893632,nose_vel_w10,120
+velocity,left_right,3,0.4642821019208667,left_wrist_vel_w10,165
+velocity,left_right,4,0.44135905172605727,left_elbow_vel_w10,150
+velocity,left_right,5,0.4233900408299116,right_ear_vel_w2,175
+pos_vel,angle,1,0.2200087441580355,left_third_finger_distal_pos+vel,120
+pos_vel,angle,2,0.2500215810041678,left_knee_pos+vel,110
+pos_vel,angle,3,0.155223207317147,left_fourth_finger_distal_pos+vel,105
+pos_vel,angle,4,0.25976763267696834,right_elbow_pos+vel,170
+pos_vel,angle,5,0.1752326292550197,left_elbow_pos+vel,165
+pos_vel,depth,1,0.5425044198736301,left_third_finger_distal_pos+vel,150
+pos_vel,depth,2,0.5103361256378303,right_elbow_pos+vel,95
+pos_vel,depth,3,0.44181593022327115,right_hip_pos+vel,130
+pos_vel,depth,4,0.5739929081918176,right_ear_pos+vel,150
+pos_vel,depth,5,0.7137282827978877,left_wrist_pos+vel,145
+pos_vel,left_right,1,0.5391802103957168,right_knee_pos+vel,180
+pos_vel,left_right,2,0.6085180381481903,right_wrist_pos+vel,125
+pos_vel,left_right,3,0.3866861197839445,left_third_finger_pip_pos+vel,165
+pos_vel,left_right,4,0.3723910338714518,mid_hip_pos+vel,160
+pos_vel,left_right,5,0.40759269602717796,right_third_finger_dip_pos+vel,180
+two_parts,angle,1,0.27044828054897907,left_wrist + right_third_finger_distal,170
+two_parts,angle,2,0.18818526994031604,right_hip + right_knee,110
+two_parts,angle,3,0.1492446298918373,left_wrist + right_second_finger_distal,120
+two_parts,angle,4,0.3105832626782984,right_shoulder + right_knee,160
+two_parts,angle,5,0.2836507638522092,left_wrist + right_hip,150
+two_parts,depth,1,0.5519921250492075,right_elbow + right_shoulder,150
+two_parts,depth,2,0.510200910894465,right_shoulder + right_second_finger_distal,110
+two_parts,depth,3,0.3489872853221958,right_hip + right_knee,110
+two_parts,depth,4,0.5280754621529715,right_wrist + right_knee,160
+two_parts,depth,5,0.6649830715338961,right_shoulder + right_second_finger_distal,150
+two_parts,left_right,1,0.5225844456487079,right_shoulder + right_second_finger_distal,150
+two_parts,left_right,2,0.7276976558897237,right_wrist + right_hip,150
+two_parts,left_right,3,0.39706682407146043,right_wrist + left_wrist,150
+two_parts,left_right,4,0.4181718232935572,right_wrist + right_second_finger_distal,150
+two_parts,left_right,5,0.37878419393722396,right_wrist + left_wrist,170
+multi_frame,angle,1,0.2025846481280209,right_wrist_3frames,110
+multi_frame,angle,2,0.16436306181593163,right_wrist_3frames,115
+multi_frame,angle,3,0.12133043816377087,right_second_finger_distal_3frames,100
+multi_frame,angle,4,0.213391997281711,right_knee_3frames,125
+multi_frame,angle,5,0.0105729601120923,right_second_finger_distal_3frames,145
+multi_frame,depth,1,0.6318130811915823,right_second_finger_distal_3frames,150
+multi_frame,depth,2,0.45048089580483086,right_second_finger_distal_3frames,100
+multi_frame,depth,3,0.44662689683568235,right_second_finger_distal_3frames,125
+multi_frame,depth,4,0.5030602891412015,right_wrist_3frames,140
+multi_frame,depth,5,0.6780596898830392,right_wrist_3frames,135
+multi_frame,left_right,1,0.3950583692611519,right_second_finger_distal_3frames,150
+multi_frame,left_right,2,0.6133741479930364,right_wrist_3frames,140
+multi_frame,left_right,3,0.3351685265390276,right_wrist_3frames,160
+multi_frame,left_right,4,0.2733154727257494,right_second_finger_distal_3frames,125
+multi_frame,left_right,5,0.3305977557874098,right_second_finger_distal_3frames,170

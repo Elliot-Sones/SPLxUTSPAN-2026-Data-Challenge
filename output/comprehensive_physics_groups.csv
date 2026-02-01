@@ -1,0 +1,96 @@
+target,group,player,best_r2,best_frame,best_model,description
+angle,fingertip_pos,1,0.08053503613294599,140,ridge,Fingertip positions
+angle,fingertip_pos,2,-0.0017395534818012148,140,ridge,Fingertip positions
+angle,fingertip_pos,3,-0.07108108146731218,150,ridge,Fingertip positions
+angle,fingertip_pos,4,0.07564014023634236,160,ridge,Fingertip positions
+angle,fingertip_pos,5,0.21907566542343204,150,rf,Fingertip positions
+angle,fingertip_vel,1,0.13218275744144836,160,ridge,Fingertip velocities
+angle,fingertip_vel,2,0.06150172758107986,165,rf,Fingertip velocities
+angle,fingertip_vel,3,-0.09789215654154093,160,ridge,Fingertip velocities
+angle,fingertip_vel,4,0.17616836146194503,145,rf,Fingertip velocities
+angle,fingertip_vel,5,-0.029231407432398493,160,rf,Fingertip velocities
+angle,fingertip_full,1,0.12721298776853962,165,rf,Fingertip pos+vel+acc
+angle,fingertip_full,2,-0.03849836286746755,165,rf,Fingertip pos+vel+acc
+angle,fingertip_full,3,-0.21066716187500134,155,rf,Fingertip pos+vel+acc
+angle,fingertip_full,4,0.05612147035180681,150,rf,Fingertip pos+vel+acc
+angle,fingertip_full,5,0.14861768194491898,150,rf,Fingertip pos+vel+acc
+angle,wrist_finger_angle,1,0.04381109500942093,155,ridge,Wrist-finger angle
+angle,wrist_finger_angle,2,0.08513826409691416,170,ridge,Wrist-finger angle
+angle,wrist_finger_angle,3,0.006323064384672339,170,ridge,Wrist-finger angle
+angle,wrist_finger_angle,4,0.10809330256456795,165,rf,Wrist-finger angle
+angle,wrist_finger_angle,5,-0.04128469169695781,165,ridge,Wrist-finger angle
+angle,finger_spread,1,0.026436045013318754,145,ridge,Finger spread distances
+angle,finger_spread,2,-0.008567620187032388,175,ridge,Finger spread distances
+angle,finger_spread,3,0.08729663765542439,150,ridge,Finger spread distances
+angle,finger_spread,4,-0.06631748116018144,155,rf,Finger spread distances
+angle,finger_spread,5,0.05669442040751094,175,rf,Finger spread distances
+angle,release_trajectory,1,0.1109018612413899,170,ridge,Release trajectory
+angle,release_trajectory,2,0.0638421278361323,160,ridge,Release trajectory
+angle,release_trajectory,3,-0.16017071560821017,170,ridge,Release trajectory
+angle,release_trajectory,4,-0.007171995490171668,170,ridge,Release trajectory
+angle,release_trajectory,5,0.08694613196020695,160,rf,Release trajectory
+angle,arm_chain_pos,1,0.10730056032429891,170,ridge,Arm chain positions
+angle,arm_chain_pos,2,0.033058030787956216,165,ridge,Arm chain positions
+angle,arm_chain_pos,3,-0.07931254136610777,175,ridge,Arm chain positions
+angle,arm_chain_pos,4,0.15198455620825213,170,ridge,Arm chain positions
+angle,arm_chain_pos,5,0.2179941586094294,150,rf,Arm chain positions
+angle,arm_chain_full,1,0.09877111328924437,170,ridge,Arm chain pos+vel+acc
+angle,arm_chain_full,2,0.06469648249333837,155,rf,Arm chain pos+vel+acc
+angle,arm_chain_full,3,-0.2113346218539791,140,rf,Arm chain pos+vel+acc
+angle,arm_chain_full,4,0.1314511833234432,140,rf,Arm chain pos+vel+acc
+angle,arm_chain_full,5,0.18812979512855854,150,rf,Arm chain pos+vel+acc
+angle,elbow_angle,1,-0.0002673654432401307,150,ridge,Elbow bend angle
+angle,elbow_angle,2,0.033229939091678484,170,ridge,Elbow bend angle
+angle,elbow_angle,3,-0.03363987258200307,175,rf,Elbow bend angle
+angle,elbow_angle,4,0.07679288678547613,165,rf,Elbow bend angle
+angle,elbow_angle,5,-0.02371948229573473,160,ridge,Elbow bend angle
+angle,guide_hand,1,0.17463058422751132,140,ridge,Guide hand position
+angle,guide_hand,2,-0.04442503707043066,160,ridge,Guide hand position
+angle,guide_hand,3,-0.06762123749778004,175,rf,Guide hand position
+angle,guide_hand,4,0.11609799375440977,150,rf,Guide hand position
+angle,guide_hand,5,0.1327121298392555,155,ridge,Guide hand position
+depth,leg_drive_pos,1,0.4720866516824873,140,rf,Leg positions
+depth,leg_drive_pos,2,0.4309895679627632,95,ridge,Leg positions
+depth,leg_drive_pos,3,0.3621342086424405,110,ridge,Leg positions
+depth,leg_drive_pos,4,0.39584749623599225,120,ridge,Leg positions
+depth,leg_drive_pos,5,0.6518237633175827,145,ridge,Leg positions
+depth,leg_drive_vel,1,0.3115476855628957,125,rf,Leg velocities
+depth,leg_drive_vel,2,0.5690613052983856,90,ridge,Leg velocities
+depth,leg_drive_vel,3,0.45475489250440737,130,ridge,Leg velocities
+depth,leg_drive_vel,4,0.4569866006023985,125,ridge,Leg velocities
+depth,leg_drive_vel,5,0.6326199130060106,135,ridge,Leg velocities
+depth,leg_drive_full,1,0.5013263817414351,130,ridge,Leg pos+vel+acc
+depth,leg_drive_full,2,0.4830093605061223,90,ridge,Leg pos+vel+acc
+depth,leg_drive_full,3,0.5075872465964728,120,rf,Leg pos+vel+acc
+depth,leg_drive_full,4,0.5134128523389994,130,rf,Leg pos+vel+acc
+depth,leg_drive_full,5,0.6788442333045812,135,ridge,Leg pos+vel+acc
+depth,arm_chain_pos,1,0.5437599810124144,150,ridge,Arm extension
+depth,arm_chain_pos,2,0.022818191636551854,170,rf,Arm extension
+depth,arm_chain_pos,3,0.11101202155337153,170,ridge,Arm extension
+depth,arm_chain_pos,4,0.4619862787663227,160,ridge,Arm extension
+depth,arm_chain_pos,5,0.703488323023596,145,ridge,Arm extension
+depth,arm_chain_full,1,0.5793807563074965,150,rf,Arm pos+vel+acc
+depth,arm_chain_full,2,0.007198955339419721,130,rf,Arm pos+vel+acc
+depth,arm_chain_full,3,0.49110081148252394,130,ridge,Arm pos+vel+acc
+depth,arm_chain_full,4,0.5894193225910287,135,rf,Arm pos+vel+acc
+depth,arm_chain_full,5,0.678301250331512,140,rf,Arm pos+vel+acc
+left_right,body_alignment,1,0.25632412832021345,175,rf,Body symmetry
+left_right,body_alignment,2,0.6782050786627993,160,rf,Body symmetry
+left_right,body_alignment,3,0.6722421358679224,175,ridge,Body symmetry
+left_right,body_alignment,4,0.15993840658373548,175,ridge,Body symmetry
+left_right,body_alignment,5,0.2546296076469219,175,rf,Body symmetry
+left_right,arm_chain_pos,1,0.46469082040257537,170,ridge,Arm positions
+left_right,arm_chain_pos,2,0.7022893914233066,155,ridge,Arm positions
+left_right,arm_chain_pos,3,0.2833708937678312,175,ridge,Arm positions
+left_right,arm_chain_pos,4,0.26112833372919697,165,ridge,Arm positions
+left_right,arm_chain_pos,5,0.10935979193675338,175,ridge,Arm positions
+left_right,guide_hand,1,0.5439059364322516,175,rf,Guide hand
+left_right,guide_hand,2,0.31359873018820417,140,ridge,Guide hand
+left_right,guide_hand,3,0.27097178963352286,175,rf,Guide hand
+left_right,guide_hand,4,0.4142113208184436,170,ridge,Guide hand
+left_right,guide_hand,5,0.06354784711997497,150,rf,Guide hand
+left_right,fingertip_pos,1,0.4719448669868064,155,ridge,Fingertip alignment
+left_right,fingertip_pos,2,0.49423127244326437,150,ridge,Fingertip alignment
+left_right,fingertip_pos,3,0.322792164619346,160,ridge,Fingertip alignment
+left_right,fingertip_pos,4,0.36621604424920695,150,ridge,Fingertip alignment
+left_right,fingertip_pos,5,0.015619817198230024,170,ridge,Fingertip alignment

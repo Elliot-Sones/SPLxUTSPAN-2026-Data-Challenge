@@ -1,0 +1,2 @@
+kernel,alpha,mse,angle_features,depth_features,lr_features
+matern_0.5,1.0,0.010243323659326656,25,25,25

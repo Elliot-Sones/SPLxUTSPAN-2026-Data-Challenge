@@ -1,0 +1,13 @@
+{
+  "player_id": 1,
+  "target": "angle",
+  "n_train_samples": 70,
+  "n_test_samples": 23,
+  "best_model": "ridge",
+  "n_features": 17,
+  "cv_scaled_mse": 0.0012564872008011979,
+  "cv_r2": 0.32454273570590586,
+  "baseline_mse": 0.0018602024184332954,
+  "improvement_pct": 32.45427549441422,
+  "best_params": "{'k_features': 17, 'model': 'ridge', 'ridge_alpha': 12.474192310578848}"
+}
