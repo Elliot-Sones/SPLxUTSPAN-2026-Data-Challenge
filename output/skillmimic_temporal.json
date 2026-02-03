@@ -1,0 +1,47 @@
+{
+  "shot_style1": {
+    "wrist_height_start": 0.22678211331367493,
+    "wrist_height_release": -0.2576316297054291,
+    "wrist_height_change": -0.484413743019104,
+    "wrist_max_height": 0.7249213457107544,
+    "wrist_max_height_frame": 44,
+    "wrist_speed_at_release": 2.3172411918640137,
+    "wrist_peak_speed": 2.3172411918640137,
+    "wrist_peak_speed_frame": 59,
+    "elbow_speed_at_release": 2.256007432937622,
+    "elbow_peak_speed": 2.2603230476379395,
+    "release_timing": 0.5673076923076923,
+    "peak_speed_timing": 0.5673076923076923,
+    "max_height_timing": 0.4230769230769231
+  },
+  "shot_style2": {
+    "wrist_height_start": 0.10153056681156158,
+    "wrist_height_release": -0.285774827003479,
+    "wrist_height_change": -0.3873053789138794,
+    "wrist_max_height": 0.6476242542266846,
+    "wrist_max_height_frame": 38,
+    "wrist_speed_at_release": 2.2762176990509033,
+    "wrist_peak_speed": 2.2762176990509033,
+    "wrist_peak_speed_frame": 51,
+    "elbow_speed_at_release": 2.1954116821289062,
+    "elbow_peak_speed": 2.199367046356201,
+    "release_timing": 0.5257731958762887,
+    "peak_speed_timing": 0.5257731958762887,
+    "max_height_timing": 0.3917525773195876
+  },
+  "shot_style3": {
+    "wrist_height_start": 0.25686323642730713,
+    "wrist_height_release": -0.2459438592195511,
+    "wrist_height_change": -0.502807080745697,
+    "wrist_max_height": 0.7944655418395996,
+    "wrist_max_height_frame": 39,
+    "wrist_speed_at_release": 2.1956660747528076,
+    "wrist_peak_speed": 2.213496446609497,
+    "wrist_peak_speed_frame": 64,
+    "elbow_speed_at_release": 2.1912875175476074,
+    "elbow_peak_speed": 2.1933653354644775,
+    "release_timing": 0.62,
+    "peak_speed_timing": 0.64,
+    "max_height_timing": 0.39
+  }
+}

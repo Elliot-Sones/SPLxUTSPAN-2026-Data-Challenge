@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mujoco model="basketball_visualization">
+    <!--
+    Basketball Free Throw Visualization
+
+    This model shows:
+    - Court with free throw line at approximate player position
+    - Hoop at standard position (15 feet from free throw line)
+    - Ball with realistic size and mass
+    - Hand platform that can push the ball
+
+    To see the data-physics disconnect:
+    - The ball starts on the hand at the player's position
+    - Press SPACE to run simulation and watch ball trajectory
+    - Notice where ball lands vs where hoop is
+
+    Player position from data: approximately x=5.7m, y=-7.6m (18.7ft, -24.9ft)
+    Hoop should be ~4.57m (15ft) away at height 3.05m (10ft)
+    -->
+
+    <option gravity="0 0 -9.81" timestep="0.002"/>
+
+    <visual>
+        <global offwidth="1920" offheight="1080"/>
+        <quality shadowsize="4096"/>
+        <headlight ambient="0.4 0.4 0.4" diffuse="0.8 0.8 0.8"/>
+    </visual>
+
+    <asset>
+        <!-- Court and environment -->
+        <material name="court" rgba="0.76 0.60 0.42 1" specular="0.1"/>
+        <material name="line" rgba="1 1 1 1"/>
+        <material name="backboard" rgba="1 1 1 0.8" specular="0.5"/>
+        <material name="rim" rgba="1 0.3 0 1" specular="0.8"/>
+        <material name="ball" rgba="1 0.5 0 1" specular="0.3"/>
+        <material name="hand" rgba="0.85 0.7 0.55 1"/>
+        <material name="target" rgba="0 1 0 0.5"/>
+
+        <!-- Textures -->
+        <texture name="skybox" type="skybox" builtin="gradient" rgb1="0.3 0.5 0.7" rgb2="0 0 0" width="512" height="512"/>
+    </asset>
+
+    <worldbody>
+        <!-- Lights -->
+        <light pos="0 0 10" dir="0 0 -1" diffuse="1 1 1" specular="0.3 0.3 0.3"/>
+        <light pos="5 -10 8" dir="-0.3 0.6 -0.5" diffuse="0.5 0.5 0.5"/>
+
+        <!-- Court floor -->
+        <geom name="court" type="plane" size="15 15 0.1" material="court"/>
+
+        <!-- ==================== PLAYER POSITION ==================== -->
+        <!-- Free throw line marker (player shoots from here) -->
+        <!-- Player position from skeleton data: x ~ 5.7m, y ~ -7.6m -->
+        <geom name="freethrow_line" type="box" pos="5.7 -7.6 0.005" size="0.9 0.03 0.005" material="line"/>
+
+        <!-- Player position marker (green) -->
+        <geom name="player_marker" type="cylinder" pos="5.7 -7.6 0.01" size="0.3 0.01" rgba="0 0.8 0 0.5"/>
+
+        <!-- ==================== HOOP POSITION ==================== -->
+        <!-- Standard: 15 feet (4.57m) from free throw line, 10 feet (3.05m) high -->
+        <!-- If player is at (5.7, -7.6), hoop could be in multiple directions -->
+
+        <!-- OPTION A: Hoop in -Y direction (toward y = -12.17) -->
+        <body name="hoop_y" pos="5.7 -12.17 3.05">
+            <!-- Rim (18 inch = 0.457m diameter) -->
+            <geom name="rim_y" type="cylinder" size="0.229 0.015" material="rim" euler="90 0 0"/>
+            <!-- Backboard -->
+            <geom name="backboard_y" type="box" pos="0 -0.15 0.45" size="0.91 0.02 0.61" material="backboard"/>
+            <!-- Pole -->
+            <geom name="pole_y" type="cylinder" pos="0 -0.4 -1.5" size="0.08 1.5" rgba="0.3 0.3 0.3 1"/>
+        </body>
+
+        <!-- OPTION B: Hoop in -X direction (toward x = 1.13) -->
+        <body name="hoop_x" pos="1.13 -7.6 3.05">
+            <!-- Rim -->
+            <geom name="rim_x" type="cylinder" size="0.229 0.015" material="rim"/>
+            <!-- Backboard -->
+            <geom name="backboard_x" type="box" pos="-0.15 0 0.45" size="0.02 0.91 0.61" material="backboard"/>
+            <!-- Pole -->
+            <geom name="pole_x" type="cylinder" pos="-0.4 0 -1.5" size="0.08 1.5" rgba="0.3 0.3 0.3 1"/>
+        </body>
+
+        <!-- ==================== SHOOTING HAND ==================== -->
+        <!-- Hand starts at typical release height (~2m) -->
+        <body name="hand" pos="5.7 -7.6 1.8">
+            <joint name="hand_x" type="slide" axis="1 0 0" range="-5 5"/>
+            <joint name="hand_y" type="slide" axis="0 1 0" range="-5 5"/>
+            <joint name="hand_z" type="slide" axis="0 0 1" range="-1 2"/>
+
+            <!-- Palm (cylinder, slightly cupped) -->
+            <geom name="palm" type="cylinder" size="0.10 0.02" material="hand" mass="2.0"/>
+        </body>
+
+        <!-- ==================== BASKETBALL ==================== -->
+        <!-- Ball: diameter 9.43 inches = 0.24m, radius = 0.12m -->
+        <!-- Mass: 22 oz = 0.625 kg -->
+        <body name="ball" pos="5.7 -7.6 1.94">
+            <freejoint name="ball_free"/>
+            <geom name="basketball" type="sphere" size="0.12" material="ball" mass="0.625"/>
+        </body>
+
+        <!-- ==================== TRAJECTORY MARKERS ==================== -->
+        <!-- These show where a properly thrown ball should go -->
+
+        <!-- Arc points for ideal trajectory to hoop_y -->
+        <geom name="arc1_y" type="sphere" pos="5.7 -8.5 2.8" size="0.03" rgba="0 1 0 0.3"/>
+        <geom name="arc2_y" type="sphere" pos="5.7 -9.5 3.3" size="0.03" rgba="0 1 0 0.3"/>
+        <geom name="arc3_y" type="sphere" pos="5.7 -10.5 3.5" size="0.03" rgba="0 1 0 0.3"/>
+        <geom name="arc4_y" type="sphere" pos="5.7 -11.5 3.3" size="0.03" rgba="0 1 0 0.3"/>
+
+        <!-- Arc points for ideal trajectory to hoop_x -->
+        <geom name="arc1_x" type="sphere" pos="4.5 -7.6 2.8" size="0.03" rgba="1 1 0 0.3"/>
+        <geom name="arc2_x" type="sphere" pos="3.5 -7.6 3.3" size="0.03" rgba="1 1 0 0.3"/>
+        <geom name="arc3_x" type="sphere" pos="2.5 -7.6 3.5" size="0.03" rgba="1 1 0 0.3"/>
+        <geom name="arc4_x" type="sphere" pos="1.5 -7.6 3.3" size="0.03" rgba="1 1 0 0.3"/>
+
+        <!-- ==================== CAMERAS ==================== -->
+        <camera name="side_y" pos="10 -10 4" xyaxes="0 -1 0 0.3 0 1"/>
+        <camera name="side_x" pos="3.5 -12 4" xyaxes="1 0 0 0 0.3 1"/>
+        <camera name="top" pos="5.7 -10 12" xyaxes="1 0 0 0 1 0"/>
+        <camera name="behind_player" pos="5.7 -5 3" xyaxes="1 0 0 0 0.5 1"/>
+
+    </worldbody>
+
+    <!-- Hand actuators to push ball -->
+    <actuator>
+        <motor name="push_x" joint="hand_x" gear="500"/>
+        <motor name="push_y" joint="hand_y" gear="500"/>
+        <motor name="push_z" joint="hand_z" gear="500"/>
+    </actuator>
+
+    <!-- Key poses -->
+    <keyframe>
+        <!-- Starting position: ball on hand -->
+        <key name="start"
+             qpos="0 0 0   5.7 -7.6 1.94   1 0 0 0"
+             qvel="0 0 0   0 0 0   0 0 0"/>
+
+        <!-- Simulate a shot toward -Y hoop with proper velocity -->
+        <!-- Need: ~4.5m horizontal, ~1.1m up, flight time ~0.7s -->
+        <!-- vy = -4.5/0.7 = -6.4 m/s, vz = (1.1 + 0.5*9.81*0.49)/0.7 = 5 m/s -->
+        <key name="shot_y"
+             qpos="0 0 0.2   5.7 -7.6 2.14   1 0 0 0"
+             qvel="0 0 3   0 -6.5 5   0 0 0"/>
+
+        <!-- Simulate a shot toward -X hoop -->
+        <key name="shot_x"
+             qpos="0 0 0.2   5.7 -7.6 2.14   1 0 0 0"
+             qvel="0 0 3   -6.5 0 5   0 0 0"/>
+
+        <!-- What we actually see from the data: mostly upward, very little horizontal -->
+        <key name="data_shot"
+             qpos="0 0 0.2   5.7 -7.6 2.14   1 0 0 0"
+             qvel="0 0 3   -0.5 -0.7 4   0 0 0"/>
+    </keyframe>
+
+</mujoco>

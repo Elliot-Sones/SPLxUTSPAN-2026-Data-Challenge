@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mujoco model="keypoints_visualization">
+    <!--
+    Simple visualization: Each keypoint is an independent sphere.
+    Positions come directly from the skeleton data.
+    -->
+
+    <option gravity="0 0 -9.81" timestep="0.002"/>
+
+    <visual>
+        <global offwidth="1920" offheight="1080"/>
+        <headlight ambient="0.5 0.5 0.5" diffuse="0.8 0.8 0.8"/>
+    </visual>
+
+    <asset>
+        <material name="court" rgba="0.76 0.60 0.42 1"/>
+        <material name="ball" rgba="1 0.5 0 1"/>
+        <material name="joint" rgba="0.2 0.6 0.9 1"/>
+        <material name="hand" rgba="1 0.8 0.6 1"/>
+        <material name="rim" rgba="1 0.3 0 1"/>
+    </asset>
+
+    <worldbody>
+        <light pos="5 -8 10" dir="0 0 -1" diffuse="1 1 1"/>
+
+        <!-- Court -->
+        <geom name="court" type="plane" size="15 15 0.1" material="court"/>
+
+        <!-- Hoop placeholder - position will be updated -->
+        <body name="hoop" pos="1.5 -7.6 3.05">
+            <geom name="rim" type="cylinder" size="0.229 0.015" material="rim"/>
+            <geom name="backboard" type="box" pos="-0.15 0 0.45" size="0.02 0.91 0.61" rgba="1 1 1 0.8"/>
+        </body>
+
+        <!-- Each keypoint as independent body with freejoint -->
+
+        <!-- Right arm (shooting) -->
+        <body name="r_shoulder" pos="6 -7.6 1.9">
+            <freejoint/>
+            <geom type="sphere" size="0.05" material="joint"/>
+        </body>
+
+        <body name="r_elbow" pos="6.1 -7.6 1.7">
+            <freejoint/>
+            <geom type="sphere" size="0.04" material="joint"/>
+        </body>
+
+        <body name="r_wrist" pos="6.2 -7.6 1.5">
+            <freejoint/>
+            <geom type="sphere" size="0.04" material="hand"/>
+        </body>
+
+        <body name="r_finger" pos="6.3 -7.6 1.4">
+            <freejoint/>
+            <geom type="sphere" size="0.03" material="hand"/>
+        </body>
+
+        <!-- Left arm (guide) -->
+        <body name="l_shoulder" pos="5.4 -7.6 1.9">
+            <freejoint/>
+            <geom type="sphere" size="0.05" material="joint"/>
+        </body>
+
+        <body name="l_elbow" pos="5.3 -7.6 1.7">
+            <freejoint/>
+            <geom type="sphere" size="0.04" material="joint"/>
+        </body>
+
+        <body name="l_wrist" pos="5.2 -7.6 1.5">
+            <freejoint/>
+            <geom type="sphere" size="0.04" material="hand"/>
+        </body>
+
+        <!-- Head and torso -->
+        <body name="head" pos="5.7 -7.6 2.1">
+            <freejoint/>
+            <geom type="sphere" size="0.08" material="joint"/>
+        </body>
+
+        <body name="mid_hip" pos="5.7 -7.6 1.0">
+            <freejoint/>
+            <geom type="sphere" size="0.06" material="joint"/>
+        </body>
+
+        <!-- Basketball -->
+        <body name="ball" pos="6.3 -7.6 1.55">
+            <freejoint/>
+            <geom type="sphere" size="0.12" material="ball" mass="0.625"/>
+        </body>
+
+    </worldbody>
+
+</mujoco>

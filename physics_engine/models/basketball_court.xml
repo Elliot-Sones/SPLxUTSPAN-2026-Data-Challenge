@@ -1,0 +1,46 @@
+<mujoco model="basketball_freethrow">
+    <!-- Physics settings: 1ms timestep, RK4 for energy conservation -->
+    <option gravity="0 0 -9.81" timestep="0.001" integrator="RK4">
+        <flag contact="enable"/>
+    </option>
+
+    <compiler angle="degree" coordinate="local"/>
+
+    <!-- Default contact parameters -->
+    <default>
+        <geom condim="4" friction="0.6 0.02 0.01" solref="0.02 1" solimp="0.9 0.95 0.001"/>
+    </default>
+
+    <worldbody>
+        <!-- Ground plane -->
+        <geom name="floor" type="plane" size="20 20 0.1" rgba="0.8 0.7 0.6 1"/>
+
+        <!-- Backboard -->
+        <body name="backboard" pos="0 0 3.95">
+            <geom name="backboard" type="box" size="0.9 0.05 0.6" rgba="1 1 1 0.8"/>
+        </body>
+
+        <!-- Rim (modeled as 8 capsule segments for accurate collision) -->
+        <!-- Rim center is 15cm forward of backboard, at 3.05m (10 feet) height -->
+        <body name="rim" pos="0 0.15 3.05">
+            <!-- 8 segments forming a circle, radius 0.2286m (9 inches) -->
+            <geom name="rim_1" type="capsule" size="0.01" fromto="0.229 0 0 0.162 0.162 0" rgba="1 0.3 0 1" friction="0.8"/>
+            <geom name="rim_2" type="capsule" size="0.01" fromto="0.162 0.162 0 0 0.229 0" rgba="1 0.3 0 1" friction="0.8"/>
+            <geom name="rim_3" type="capsule" size="0.01" fromto="0 0.229 0 -0.162 0.162 0" rgba="1 0.3 0 1" friction="0.8"/>
+            <geom name="rim_4" type="capsule" size="0.01" fromto="-0.162 0.162 0 -0.229 0 0" rgba="1 0.3 0 1" friction="0.8"/>
+            <geom name="rim_5" type="capsule" size="0.01" fromto="-0.229 0 0 -0.162 -0.162 0" rgba="1 0.3 0 1" friction="0.8"/>
+            <geom name="rim_6" type="capsule" size="0.01" fromto="-0.162 -0.162 0 0 -0.229 0" rgba="1 0.3 0 1" friction="0.8"/>
+            <geom name="rim_7" type="capsule" size="0.01" fromto="0 -0.229 0 0.162 -0.162 0" rgba="1 0.3 0 1" friction="0.8"/>
+            <geom name="rim_8" type="capsule" size="0.01" fromto="0.162 -0.162 0 0.229 0 0" rgba="1 0.3 0 1" friction="0.8"/>
+        </body>
+
+        <!-- Basketball with free joint (6 DOF: translation + rotation) -->
+        <!-- Initial position at free throw line (4.57m from hoop) -->
+        <body name="ball" pos="-4.57 0 2.0">
+            <freejoint name="ball_joint"/>
+            <geom name="ball_geom" type="sphere" size="0.12" mass="0.625"
+                  friction="0.6 0.005 0.0001" rgba="1 0.5 0 1"/>
+            <inertial pos="0 0 0" mass="0.625" diaginertia="0.003 0.003 0.003"/>
+        </body>
+    </worldbody>
+</mujoco>

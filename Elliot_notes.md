@@ -1,3 +1,34 @@
+What Could Be Tried                                                             
+                                                                                  
+  1. Better Feature Engineering                                                   
+                                                                                  
+  The current features (368 total) are from advanced_features.py and              
+  hybrid_features.py. Possible improvements:                                      
+  - Domain-specific biomechanics features (joint angles, body segments)           
+  - More sophisticated temporal features (DTW distances, shape descriptors)       
+  - Player-specific feature interactions                                          
+                                                                                  
+  2. Different Model Architecture                                                 
+                                                                                  
+  - Try models not yet tested: ExtraTrees, HistGradientBoosting, stacked          
+  generalization with different meta-learners                                     
+  - Ensemble of different feature sets (not just different models)                
+                                                                                  
+  3. Better Handling of Player 5                                                  
+                                                                                  
+  The research shows Player 5 has 2-3x higher target variance. Current models     
+  treat all players equally in the ensemble. Could try:                           
+  - Player-specific model weighting                                               
+  - More data augmentation for Player 5                                           
+  - Different regularization per player  
+
+
+  
+
+
+
+
+
 Creating more data: 
 
 Can we create data that improves the models understanding with same algorithm and features set

@@ -1,0 +1,80 @@
+{
+  "shot_style1": {
+    "num_frames": 104,
+    "release_frame": 59,
+    "release_pct": 56.730769230769226,
+    "wrist_pos_release": [
+      0.8236044645309448,
+      -0.2576316297054291,
+      -0.605122447013855
+    ],
+    "wrist_vel_release": [
+      0.02651575580239296,
+      1.200181245803833,
+      1.9820364713668823
+    ],
+    "elbow_angle_release": 26.317964553833008,
+    "ball_vel_release": [
+      0.9386304020881653,
+      2.5681252479553223,
+      0.0
+    ],
+    "ball_speed_release": 2.734281301498413,
+    "release_angle_vertical": 69.92302703857422,
+    "peak_wrist_velocity": 2.3172411918640137,
+    "peak_velocity_frame": 59,
+    "peak_velocity_pct": 56.730769230769226
+  },
+  "shot_style2": {
+    "num_frames": 97,
+    "release_frame": 51,
+    "release_pct": 52.57731958762887,
+    "wrist_pos_release": [
+      0.3960965871810913,
+      -0.285774827003479,
+      -0.6436535120010376
+    ],
+    "wrist_vel_release": [
+      0.04661117121577263,
+      1.1572750806808472,
+      1.9595173597335815
+    ],
+    "elbow_angle_release": 15.709783554077148,
+    "ball_vel_release": [
+      0.947544515132904,
+      2.566373825073242,
+      0.0
+    ],
+    "ball_speed_release": 2.735711097717285,
+    "release_angle_vertical": 69.73507690429688,
+    "peak_wrist_velocity": 2.2762176990509033,
+    "peak_velocity_frame": 51,
+    "peak_velocity_pct": 52.57731958762887
+  },
+  "shot_style3": {
+    "num_frames": 100,
+    "release_frame": 62,
+    "release_pct": 62.0,
+    "wrist_pos_release": [
+      -0.22061561048030853,
+      -0.2459438592195511,
+      -1.540052890777588
+    ],
+    "wrist_vel_release": [
+      0.05108499154448509,
+      1.0649608373641968,
+      1.919426679611206
+    ],
+    "elbow_angle_release": 69.13462829589844,
+    "ball_vel_release": [
+      0.7945284843444824,
+      2.453028440475464,
+      0.0
+    ],
+    "ball_speed_release": 2.5784926414489746,
+    "release_angle_vertical": 72.05301666259766,
+    "peak_wrist_velocity": 2.213496446609497,
+    "peak_velocity_frame": 64,
+    "peak_velocity_pct": 64.0
+  }
+}

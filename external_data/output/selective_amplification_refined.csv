@@ -1,0 +1,44 @@
+submission_num,config,percentile,alpha,depth_cal,n_modified,depth_mean,file
+370,fine_alpha_1.02,91,1.02,0.5055,11,0.5055,/Users/elliot18/Desktop/Home/Projects/SPLxUTSPAN-2026-Data-Challenge/submission/submission_370.csv
+371,fine_alpha_1.03,91,1.03,0.5055,11,0.5055000000000001,/Users/elliot18/Desktop/Home/Projects/SPLxUTSPAN-2026-Data-Challenge/submission/submission_371.csv
+372,fine_alpha_1.04,91,1.04,0.5055,11,0.5055,/Users/elliot18/Desktop/Home/Projects/SPLxUTSPAN-2026-Data-Challenge/submission/submission_372.csv
+373,fine_alpha_1.06,91,1.06,0.5055,11,0.5055,/Users/elliot18/Desktop/Home/Projects/SPLxUTSPAN-2026-Data-Challenge/submission/submission_373.csv
+374,fine_alpha_1.07,91,1.07,0.5055,11,0.5055,/Users/elliot18/Desktop/Home/Projects/SPLxUTSPAN-2026-Data-Challenge/submission/submission_374.csv
+375,fine_alpha_1.08,91,1.08,0.5055,11,0.5055,/Users/elliot18/Desktop/Home/Projects/SPLxUTSPAN-2026-Data-Challenge/submission/submission_375.csv
+376,fine_alpha_1.12,91,1.12,0.5055,11,0.5055,/Users/elliot18/Desktop/Home/Projects/SPLxUTSPAN-2026-Data-Challenge/submission/submission_376.csv
+377,fine_alpha_1.13,91,1.13,0.5055,11,0.5055,/Users/elliot18/Desktop/Home/Projects/SPLxUTSPAN-2026-Data-Challenge/submission/submission_377.csv
+378,fine_alpha_1.14,91,1.14,0.5055,11,0.5055,/Users/elliot18/Desktop/Home/Projects/SPLxUTSPAN-2026-Data-Challenge/submission/submission_378.csv
+379,fine_depth_0.5052,91,1.1,0.5052,11,0.5052,/Users/elliot18/Desktop/Home/Projects/SPLxUTSPAN-2026-Data-Challenge/submission/submission_379.csv
+380,fine_depth_0.5053,91,1.1,0.5053,11,0.5053,/Users/elliot18/Desktop/Home/Projects/SPLxUTSPAN-2026-Data-Challenge/submission/submission_380.csv
+381,fine_depth_0.5054,91,1.1,0.5054,11,0.5054,/Users/elliot18/Desktop/Home/Projects/SPLxUTSPAN-2026-Data-Challenge/submission/submission_381.csv
+382,fine_depth_0.5056,91,1.1,0.5056,11,0.5056,/Users/elliot18/Desktop/Home/Projects/SPLxUTSPAN-2026-Data-Challenge/submission/submission_382.csv
+383,fine_depth_0.5057,91,1.1,0.5057,11,0.5057000000000001,/Users/elliot18/Desktop/Home/Projects/SPLxUTSPAN-2026-Data-Challenge/submission/submission_383.csv
+384,fine_depth_0.5058,91,1.1,0.5058,11,0.5058,/Users/elliot18/Desktop/Home/Projects/SPLxUTSPAN-2026-Data-Challenge/submission/submission_384.csv
+385,asymmetric_385,91,"{'scaled_angle': 1.15, 'scaled_depth': 1.1, 'scaled_left_right': 1.1}",0.5055,11,0.5055,/Users/elliot18/Desktop/Home/Projects/SPLxUTSPAN-2026-Data-Challenge/submission/submission_385.csv
+386,asymmetric_386,91,"{'scaled_angle': 1.2, 'scaled_depth': 1.1, 'scaled_left_right': 1.1}",0.5055,11,0.5055,/Users/elliot18/Desktop/Home/Projects/SPLxUTSPAN-2026-Data-Challenge/submission/submission_386.csv
+387,asymmetric_387,91,"{'scaled_angle': 1.1, 'scaled_depth': 1.15, 'scaled_left_right': 1.1}",0.5055,11,0.5055,/Users/elliot18/Desktop/Home/Projects/SPLxUTSPAN-2026-Data-Challenge/submission/submission_387.csv
+388,asymmetric_388,91,"{'scaled_angle': 1.1, 'scaled_depth': 1.1, 'scaled_left_right': 1.15}",0.5055,11,0.5055,/Users/elliot18/Desktop/Home/Projects/SPLxUTSPAN-2026-Data-Challenge/submission/submission_388.csv
+389,asymmetric_389,91,"{'scaled_angle': 1.0, 'scaled_depth': 1.15, 'scaled_left_right': 1.15}",0.5055,11,0.5055,/Users/elliot18/Desktop/Home/Projects/SPLxUTSPAN-2026-Data-Challenge/submission/submission_389.csv
+390,asymmetric_390,91,"{'scaled_angle': 1.15, 'scaled_depth': 1.0, 'scaled_left_right': 1.15}",0.5055,11,0.5055000000000001,/Users/elliot18/Desktop/Home/Projects/SPLxUTSPAN-2026-Data-Challenge/submission/submission_390.csv
+391,asymmetric_391,91,"{'scaled_angle': 1.15, 'scaled_depth': 1.15, 'scaled_left_right': 1.0}",0.5055,11,0.5055,/Users/elliot18/Desktop/Home/Projects/SPLxUTSPAN-2026-Data-Challenge/submission/submission_391.csv
+392,asymmetric_392,91,"{'scaled_angle': 1.05, 'scaled_depth': 1.1, 'scaled_left_right': 1.15}",0.5055,11,0.5055,/Users/elliot18/Desktop/Home/Projects/SPLxUTSPAN-2026-Data-Challenge/submission/submission_392.csv
+393,asymmetric_393,91,"{'scaled_angle': 1.15, 'scaled_depth': 1.05, 'scaled_left_right': 1.1}",0.5055,11,0.5055,/Users/elliot18/Desktop/Home/Projects/SPLxUTSPAN-2026-Data-Challenge/submission/submission_393.csv
+394,asymmetric_394,91,"{'scaled_angle': 1.1, 'scaled_depth': 1.15, 'scaled_left_right': 1.05}",0.5055,11,0.5055,/Users/elliot18/Desktop/Home/Projects/SPLxUTSPAN-2026-Data-Challenge/submission/submission_394.csv
+395,custom_thresh_0.0401,custom,1.1,0.5055,12,0.5055,/Users/elliot18/Desktop/Home/Projects/SPLxUTSPAN-2026-Data-Challenge/submission/submission_395.csv
+396,custom_thresh_0.0414,custom,1.1,0.5055,12,0.5055,/Users/elliot18/Desktop/Home/Projects/SPLxUTSPAN-2026-Data-Challenge/submission/submission_396.csv
+397,custom_thresh_0.0431,custom,1.1,0.5055,9,0.5055,/Users/elliot18/Desktop/Home/Projects/SPLxUTSPAN-2026-Data-Challenge/submission/submission_397.csv
+398,custom_thresh_0.0444,custom,1.1,0.5055,9,0.5055,/Users/elliot18/Desktop/Home/Projects/SPLxUTSPAN-2026-Data-Challenge/submission/submission_398.csv
+399,weighted_wf0.3,91,1.1*weighted_0.3,0.5055,11,0.5055,/Users/elliot18/Desktop/Home/Projects/SPLxUTSPAN-2026-Data-Challenge/submission/submission_399.csv
+400,weighted_wf0.5,91,1.1*weighted_0.5,0.5055,11,0.5055,/Users/elliot18/Desktop/Home/Projects/SPLxUTSPAN-2026-Data-Challenge/submission/submission_400.csv
+401,weighted_wf0.7,91,1.1*weighted_0.7,0.5055,11,0.5055,/Users/elliot18/Desktop/Home/Projects/SPLxUTSPAN-2026-Data-Challenge/submission/submission_401.csv
+402,weighted_wf1.0,91,1.1*weighted_1.0,0.5055,11,0.5055,/Users/elliot18/Desktop/Home/Projects/SPLxUTSPAN-2026-Data-Challenge/submission/submission_402.csv
+403,blend_219_w0.4,91,blend_0.4,0.5055,blend,0.5055,/Users/elliot18/Desktop/Home/Projects/SPLxUTSPAN-2026-Data-Challenge/submission/submission_403.csv
+404,blend_219_w0.45,91,blend_0.45,0.5055,blend,0.5055,/Users/elliot18/Desktop/Home/Projects/SPLxUTSPAN-2026-Data-Challenge/submission/submission_404.csv
+405,blend_219_w0.55,91,blend_0.55,0.5055,blend,0.5055,/Users/elliot18/Desktop/Home/Projects/SPLxUTSPAN-2026-Data-Challenge/submission/submission_405.csv
+406,blend_219_w0.6,91,blend_0.6,0.5055,blend,0.5055,/Users/elliot18/Desktop/Home/Projects/SPLxUTSPAN-2026-Data-Challenge/submission/submission_406.csv
+407,combined_a1.08_d0.5053,91,1.08,0.5053,11,0.5053,/Users/elliot18/Desktop/Home/Projects/SPLxUTSPAN-2026-Data-Challenge/submission/submission_407.csv
+408,combined_a1.12_d0.5053,91,1.12,0.5053,11,0.5053,/Users/elliot18/Desktop/Home/Projects/SPLxUTSPAN-2026-Data-Challenge/submission/submission_408.csv
+409,combined_a1.08_d0.5057,91,1.08,0.5057,11,0.5056999999999999,/Users/elliot18/Desktop/Home/Projects/SPLxUTSPAN-2026-Data-Challenge/submission/submission_409.csv
+410,combined_a1.12_d0.5057,91,1.12,0.5057,11,0.5057,/Users/elliot18/Desktop/Home/Projects/SPLxUTSPAN-2026-Data-Challenge/submission/submission_410.csv
+411,combined_a1.05_d0.5052,91,1.05,0.5052,11,0.5052,/Users/elliot18/Desktop/Home/Projects/SPLxUTSPAN-2026-Data-Challenge/submission/submission_411.csv
+412,combined_a1.15_d0.5058,91,1.15,0.5058,11,0.5058,/Users/elliot18/Desktop/Home/Projects/SPLxUTSPAN-2026-Data-Challenge/submission/submission_412.csv
