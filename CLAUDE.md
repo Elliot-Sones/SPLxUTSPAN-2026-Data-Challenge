@@ -20,6 +20,28 @@ When running on test.csv file to get target for submission, the   output should 
 </research>
 
 
+<kaggle-submission>
+  After every kaggle submit, wait ~30 seconds then check scores automatically.
+  Do not wait for the user to ask "check scores."
+</kaggle-submission>
+
+<research-standard>
+  Approach every modeling task at PhD-level research quality. Find genuine breakthroughs,
+  not incremental improvements. Implementations should be impressive and sophisticated -
+  use state-of-the-art methods from recent research literature. No toy approaches.
+</research-standard>
+
+<competition-mindset>
+  This is a Kaggle competition. The goal is to achieve the highest score on ONE submission,
+  not to build a generalizable or maintainable model.
+  - Use DIFFERENT models, settings, features, bandwidths, alphas per target if that helps.
+  - Use DIFFERENT approaches per player if that helps.
+  - Cherry-pick the best column from different submissions into one Frankenstein submission.
+  - There is no "production" - only the leaderboard score matters.
+  - If angle wants bw=0.80 and LR wants bw=0.30, use both. Do not compromise.
+  - Think: "what gives the best score right now" not "what is the cleanest approach."
+</competition-mindset>
+
 <principles>
   <style>No emojis. No em dashes - use hyphens or colons instead.</style>
 
@@ -37,6 +59,11 @@ When running on test.csv file to get target for submission, the   output should 
     Clarify unclear requests, then proceed autonomously. Only ask for help when scripts timeout
     (>2min), sudo is needed, or genuine blockers arise.
   </interaction>
+
+  <response-context>
+    Always include context in every answer before conclusions.
+    The response should state: what we were trying to do, what was run, and why it matters.
+  </response-context>
 
   <ground-truth-clarification>
     For non-trivial tasks, reach ground truth understanding before coding. Simple tasks execute

@@ -1,265 +1,204 @@
 """
-Optimal Blend Search - Use known LB data to find best blend.
+Optimal Blend Search v2
 
-We have 8 known LB scores. Use submission profiles to predict LB,
-then search for blend weights that minimize predicted LB.
+Given multiple diverse submission-level predictions, find optimal
+blend weights for each target independently.
+
+Generates strategic blends combining diverse sources at small weights
+with Sub 1640 (current best LB = 0.006698).
 """
 
-import pandas as pd
+import time
 import numpy as np
+import pandas as pd
+import fcntl
 from pathlib import Path
-from scipy.optimize import minimize
-from sklearn.linear_model import LinearRegression
 
-SUBMISSION_DIR = Path(__file__).parent.parent / "submission"
-
-# Known LB scores
-KNOWN_LB = {
-    8: 0.010220,
-    9: 0.009109,
-    10: 0.008907,
-    11: 0.009848,
-    20: 0.008619,
-    25: 0.008305,  # BEST
-    34: 0.008377,
-    51: 0.008807,
-    104: 0.008827,
-    110: 0.010069,
-    111: 0.008703,
-}
+PROJECT_DIR = Path(__file__).parent.parent
+SUBMISSION_DIR = PROJECT_DIR / "submission"
+TARGETS = ["angle", "depth", "left_right"]
 
 
-def get_submission_profile(sub_num):
-    """Get profile metrics for a submission."""
-    try:
-        df = pd.read_csv(SUBMISSION_DIR / f"submission_{sub_num}.csv")
-        return {
-            'angle_std': df['scaled_angle'].std(),
-            'angle_mean': df['scaled_angle'].mean(),
-            'depth_std': df['scaled_depth'].std(),
-            'depth_mean': df['scaled_depth'].mean(),
-            'lr_std': df['scaled_left_right'].std(),
-            'lr_mean': df['scaled_left_right'].mean(),
-        }
-    except:
-        return None
-
-
-def build_lb_predictor():
-    """Build a model to predict LB from submission profile."""
-    profiles = []
-    lb_scores = []
-
-    for sub_num, lb in KNOWN_LB.items():
-        profile = get_submission_profile(sub_num)
-        if profile:
-            profiles.append(profile)
-            lb_scores.append(lb)
-
-    # Create feature matrix
-    X = np.array([[p['angle_std'], p['depth_mean']] for p in profiles])
-    y = np.array(lb_scores)
-
-    # Fit linear model
-    model = LinearRegression()
-    model.fit(X, y)
-
-    print("LB Predictor:")
-    print(f"  Coefficients: angle_std={model.coef_[0]:.6f}, depth_mean={model.coef_[1]:.6f}")
-    print(f"  Intercept: {model.intercept_:.6f}")
-    print(f"  R2 on known data: {model.score(X, y):.4f}")
-
-    return model
-
-
-def predict_lb(model, angle_std, depth_mean):
-    """Predict LB from profile metrics."""
-    return model.predict([[angle_std, depth_mean]])[0]
-
-
-def create_blend(subs, weights):
-    """Create a blended submission from multiple submissions."""
-    dfs = [pd.read_csv(SUBMISSION_DIR / f"submission_{s}.csv") for s in subs]
-
-    cols = ['scaled_angle', 'scaled_depth', 'scaled_left_right']
-    blend_data = sum(w * dfs[i][cols].values for i, w in enumerate(weights))
-
-    result = dfs[0][['id']].copy()
-    result['scaled_angle'] = blend_data[:, 0]
-    result['scaled_depth'] = blend_data[:, 1]
-    result['scaled_left_right'] = blend_data[:, 2]
-
-    return result
-
-
-def search_optimal_blend():
-    """Search for optimal blend weights to minimize predicted LB."""
-
-    # Build LB predictor
-    lb_model = build_lb_predictor()
-
-    # Submissions to blend
-    candidates = [9, 10, 25, 111]
-
-    print(f"\n{'='*60}")
-    print("BLEND SEARCH")
-    print(f"{'='*60}")
-    print(f"Candidates: {candidates}")
-
-    # Individual profiles
-    print("\nIndividual profiles:")
-    for s in candidates:
-        p = get_submission_profile(s)
-        pred = predict_lb(lb_model, p['angle_std'], p['depth_mean'])
-        actual = KNOWN_LB.get(s, '-')
-        print(f"  Sub {s}: angle_std={p['angle_std']:.4f}, depth_mean={p['depth_mean']:.4f}, "
-              f"pred_LB={pred:.6f}, actual_LB={actual}")
-
-    # Grid search for 2-way blends
-    print("\n2-way blends:")
-    best_2way = None
-    best_2way_pred = float('inf')
-
-    for i in range(len(candidates)):
-        for j in range(i+1, len(candidates)):
-            for w in np.arange(0.0, 1.05, 0.1):
-                weights = [0] * len(candidates)
-                weights[i] = w
-                weights[j] = 1 - w
-
-                blend = create_blend(candidates, weights)
-                angle_std = blend['scaled_angle'].std()
-                depth_mean = blend['scaled_depth'].mean()
-                pred_lb = predict_lb(lb_model, angle_std, depth_mean)
-
-                if pred_lb < best_2way_pred:
-                    best_2way_pred = pred_lb
-                    best_2way = (candidates[i], candidates[j], w, 1-w, angle_std, depth_mean)
-
-    print(f"Best 2-way: Sub{best_2way[0]} ({best_2way[2]:.1f}) + Sub{best_2way[1]} ({best_2way[3]:.1f})")
-    print(f"  angle_std={best_2way[4]:.4f}, depth_mean={best_2way[5]:.4f}, pred_LB={best_2way_pred:.6f}")
-
-    # Grid search for 3-way blends
-    print("\n3-way blends (Sub 9 + Sub 10 + Sub X):")
-    best_3way = None
-    best_3way_pred = float('inf')
-
-    for third in [25, 111]:
-        for w1 in np.arange(0.0, 1.05, 0.1):
-            for w2 in np.arange(0.0, 1.05 - w1, 0.1):
-                w3 = 1 - w1 - w2
-                if w3 < 0:
-                    continue
-
-                subs = [9, 10, third]
-                weights = [w1, w2, w3]
-
-                blend = create_blend(subs, weights)
-                angle_std = blend['scaled_angle'].std()
-                depth_mean = blend['scaled_depth'].mean()
-                pred_lb = predict_lb(lb_model, angle_std, depth_mean)
-
-                if pred_lb < best_3way_pred:
-                    best_3way_pred = pred_lb
-                    best_3way = (subs, weights, angle_std, depth_mean)
-
-    print(f"Best 3-way: {best_3way[0]} weights={[f'{w:.1f}' for w in best_3way[1]]}")
-    print(f"  angle_std={best_3way[2]:.4f}, depth_mean={best_3way[3]:.4f}, pred_LB={best_3way_pred:.6f}")
-
-    # Fine-grained search around best 3-way
-    print("\nFine-tuning best blend...")
-    best_subs = [9, 10]  # We know 50-50 of 9+10 is best
-
-    def objective(weights):
-        weights = np.array(weights)
-        weights = weights / weights.sum()  # Normalize
-        blend = create_blend(best_subs, weights.tolist())
-        angle_std = blend['scaled_angle'].std()
-        depth_mean = blend['scaled_depth'].mean()
-        return predict_lb(lb_model, angle_std, depth_mean)
-
-    # Try different starting points
-    best_result = None
-    best_pred = float('inf')
-
-    for start in [[0.5, 0.5], [0.4, 0.6], [0.6, 0.4], [0.45, 0.55], [0.55, 0.45]]:
-        result = minimize(objective, start, method='Nelder-Mead',
-                         options={'maxiter': 1000, 'xatol': 0.001})
-        if result.fun < best_pred:
-            best_pred = result.fun
-            best_result = result
-
-    optimal_weights = np.array(best_result.x) / np.sum(best_result.x)
-    print(f"\nOptimal weights for Sub 9 + Sub 10:")
-    print(f"  Sub 9: {optimal_weights[0]:.4f}")
-    print(f"  Sub 10: {optimal_weights[1]:.4f}")
-
-    final_blend = create_blend(best_subs, optimal_weights.tolist())
-    print(f"\nFinal blend profile:")
-    print(f"  angle_std: {final_blend['scaled_angle'].std():.4f}")
-    print(f"  depth_mean: {final_blend['scaled_depth'].mean():.4f}")
-    print(f"  Predicted LB: {best_pred:.6f}")
-
-    # Compare with Sub 25 (50-50 blend)
-    print(f"\nComparison with Sub 25 (50-50 blend):")
-    sub25_profile = get_submission_profile(25)
-    sub25_pred = predict_lb(lb_model, sub25_profile['angle_std'], sub25_profile['depth_mean'])
-    print(f"  Sub 25 angle_std: {sub25_profile['angle_std']:.4f}")
-    print(f"  Sub 25 depth_mean: {sub25_profile['depth_mean']:.4f}")
-    print(f"  Sub 25 predicted LB: {sub25_pred:.6f}")
-    print(f"  Sub 25 actual LB: {KNOWN_LB[25]:.6f}")
-
-    # Save optimal blend if it's better
-    improvement = sub25_pred - best_pred
-    if improvement > 0:
-        print(f"\n*** Optimal blend is predicted to be {improvement:.6f} better than Sub 25 ***")
-
-        # Save blend
-        existing = list(SUBMISSION_DIR.glob("submission*.csv"))
-        nums = []
-        for f in existing:
-            name = f.stem
-            if name.startswith("submission_"):
-                try:
-                    nums.append(int(name.split('_')[1]))
-                except:
-                    pass
-            elif name.startswith("submission"):
-                try:
-                    nums.append(int(name[10:]))
-                except:
-                    pass
-        next_num = max(nums) + 1 if nums else 1
-
-        filepath = SUBMISSION_DIR / f"submission_{next_num}.csv"
-        final_blend.to_csv(filepath, index=False)
-        print(f"\nSaved as: {filepath}")
-        return filepath
-    else:
-        print(f"\nSub 25 is already optimal or near-optimal.")
-        return None
+def get_next_submission_number():
+    lock_path = SUBMISSION_DIR / ".submission_lock"
+    lock_path.touch(exist_ok=True)
+    with open(lock_path, 'r+') as f:
+        fcntl.flock(f, fcntl.LOCK_EX)
+        try:
+            existing = list(SUBMISSION_DIR.glob("submission_*.csv"))
+            nums = [int(fp.stem.split('_')[1]) for fp in existing
+                    if fp.stem.split('_')[1].isdigit()]
+            next_num = max(nums) + 1 if nums else 1
+            (SUBMISSION_DIR / f"submission_{next_num}.csv").touch(exist_ok=True)
+            return next_num
+        finally:
+            fcntl.flock(f, fcntl.LOCK_UN)
 
 
 def main():
-    print("="*80)
-    print("OPTIMAL BLEND SEARCH")
-    print("="*80)
-    print("\nUsing known LB data to find best blend weights")
+    t0 = time.time()
+    print("=" * 70)
+    print("OPTIMAL BLEND SEARCH v2")
+    print("=" * 70)
 
-    result = search_optimal_blend()
+    # Load base submissions
+    sub_1350 = pd.read_csv(SUBMISSION_DIR / "submission_1350.csv")
+    sub_1640 = pd.read_csv(SUBMISSION_DIR / "submission_1640.csv")
+    sub_784 = pd.read_csv(SUBMISSION_DIR / "submission_784.csv")
 
-    print("\n" + "="*80)
-    print("CONCLUSION")
-    print("="*80)
+    # Load diverse standalone predictions
+    candidates = {}
+    for name, num in [
+        ('feat_weighted', 1707),
+        ('pca_subspace', 1708),
+        ('multi_kernel', 1709),
+        ('huber_weighted', 1710),
+        ('power_transform', 1693),
+    ]:
+        path = SUBMISSION_DIR / f"submission_{num}.csv"
+        if path.exists():
+            candidates[name] = pd.read_csv(path)
+            print(f"  Loaded {name} (Sub {num})")
 
-    if result:
-        print(f"Created new submission: {result}")
-    else:
-        print("Sub 25 (50-50 blend of Sub 9 + Sub 10) remains the best approach.")
-        print("\nTo beat Sub 25, we would need:")
-        print("1. A fundamentally different model architecture")
-        print("2. New features that capture untapped signal")
-        print("3. Different training strategy (e.g., more data)")
+    # Also check for meta-feature and OOF stack predictions
+    for name, num in [('meta_features', 1685), ('oof_stack', 1666)]:
+        path = SUBMISSION_DIR / f"submission_{num}.csv"
+        if path.exists():
+            candidates[name] = pd.read_csv(path)
+            print(f"  Loaded {name} (Sub {num})")
+
+    print(f"\n  Total diverse candidates: {len(candidates)}")
+
+    # ==============================================================
+    # DIVERSITY ANALYSIS
+    # ==============================================================
+    print(f"\n{'=' * 70}")
+    print("DIVERSITY ANALYSIS (r with Sub 1640)")
+    print(f"{'=' * 70}")
+
+    diversity = {}
+    for name, sub in candidates.items():
+        rs = {}
+        for target in TARGETS:
+            col = f'scaled_{target}'
+            r = np.corrcoef(sub[col].values, sub_1640[col].values)[0, 1]
+            rs[target] = r
+        diversity[name] = rs
+        print(f"  {name:20s}: angle={rs['angle']:.4f}, depth={rs['depth']:.4f}, lr={rs['left_right']:.4f}")
+
+    # Also show Sub 1350 vs Sub 1640
+    rs_1350 = {}
+    for target in TARGETS:
+        col = f'scaled_{target}'
+        r = np.corrcoef(sub_1350[col].values, sub_1640[col].values)[0, 1]
+        rs_1350[target] = r
+    print(f"  {'sub_1350':20s}: angle={rs_1350['angle']:.4f}, depth={rs_1350['depth']:.4f}, lr={rs_1350['left_right']:.4f}")
+
+    # ==============================================================
+    # STRATEGIC BLENDS
+    # ==============================================================
+    print(f"\n{'=' * 70}")
+    print("GENERATING STRATEGIC BLENDS")
+    print(f"{'=' * 70}")
+
+    # Strategy 1: Multi-signal equal-weight blend
+    diverse_names = [n for n in candidates]
+    for total_w in [0.05, 0.08, 0.10, 0.15]:
+        per_w = total_w / len(diverse_names)
+        sub_num = get_next_submission_number()
+        blended = sub_1640.copy()
+        for target in TARGETS:
+            col = f'scaled_{target}'
+            val = (1 - total_w) * sub_1640[col].values
+            for name in diverse_names:
+                val += per_w * candidates[name][col].values
+            blended[col] = val
+        blended.to_csv(SUBMISSION_DIR / f"submission_{sub_num}.csv", index=False)
+        print(f"  Sub {sub_num}: {total_w*100:.0f}% equal-weight ({len(diverse_names)} sources) + {(1-total_w)*100:.0f}% Sub 1640")
+
+    # Strategy 2: Per-target most diverse
+    target_best_diverse = {}
+    for target in TARGETS:
+        best_name = min(diversity, key=lambda n: diversity[n][target])
+        target_best_diverse[target] = best_name
+    print(f"\n  Most diverse per target: {target_best_diverse}")
+
+    for total_w in [0.05, 0.10, 0.15]:
+        sub_num = get_next_submission_number()
+        blended = sub_1640.copy()
+        for target in TARGETS:
+            col = f'scaled_{target}'
+            source = target_best_diverse[target]
+            blended[col] = (1 - total_w) * sub_1640[col] + total_w * candidates[source][col]
+        blended.to_csv(SUBMISSION_DIR / f"submission_{sub_num}.csv", index=False)
+        desc = ", ".join(f"{t}={target_best_diverse[t]}" for t in TARGETS)
+        print(f"  Sub {sub_num}: {total_w*100:.0f}% per-target diverse + {(1-total_w)*100:.0f}% Sub 1640 ({desc})")
+
+    # Strategy 3: Only diverse sources (r < 0.95 for at least one target)
+    very_diverse = [n for n in candidates if any(diversity[n][t] < 0.95 for t in TARGETS)]
+    if very_diverse:
+        print(f"\n  Very diverse sources (r<0.95 on any target): {very_diverse}")
+        for total_w in [0.05, 0.10]:
+            per_w = total_w / len(very_diverse)
+            sub_num = get_next_submission_number()
+            blended = sub_1640.copy()
+            for target in TARGETS:
+                col = f'scaled_{target}'
+                val = (1 - total_w) * sub_1640[col].values
+                for name in very_diverse:
+                    val += per_w * candidates[name][col].values
+                blended[col] = val
+            blended.to_csv(SUBMISSION_DIR / f"submission_{sub_num}.csv", index=False)
+            print(f"  Sub {sub_num}: {total_w*100:.0f}% very-diverse ({len(very_diverse)} sources) + {(1-total_w)*100:.0f}% Sub 1640")
+
+    # Strategy 4: Diversity-weighted blend (more weight to more diverse)
+    for total_w in [0.10, 0.15]:
+        sub_num = get_next_submission_number()
+        blended = sub_1640.copy()
+        for target in TARGETS:
+            col = f'scaled_{target}'
+            # Weight inversely by correlation with Sub 1640
+            target_weights = {}
+            total_inv_r = 0
+            for name in candidates:
+                inv_r = 1 - diversity[name][target]
+                target_weights[name] = inv_r
+                total_inv_r += inv_r
+            # Normalize to sum to total_w
+            val = (1 - total_w) * sub_1640[col].values
+            for name in candidates:
+                w = total_w * target_weights[name] / (total_inv_r + 1e-10)
+                val += w * candidates[name][col].values
+            blended[col] = val
+        blended.to_csv(SUBMISSION_DIR / f"submission_{sub_num}.csv", index=False)
+        print(f"  Sub {sub_num}: {total_w*100:.0f}% diversity-weighted + {(1-total_w)*100:.0f}% Sub 1640")
+
+    # Strategy 5: 3-way blend with Sub 1350 offset
+    # Sub 1640 = 90% Sub 1350 + 10% LASSO
+    # Instead of blending with Sub 1640, blend with Sub 1350 + diverse + LASSO
+    # This separates the three signals
+    for lasso_w, div_w in [(0.08, 0.07), (0.10, 0.05), (0.05, 0.10)]:
+        base_w = 1 - lasso_w - div_w
+        sub_num = get_next_submission_number()
+        # Use the LASSO-only prediction (Sub 1640 - Sub 1350) * 10 to isolate LASSO
+        # Actually, just use Sub 1350 as base and add LASSO component from Sub 1640
+        lasso_pred = {}
+        for target in TARGETS:
+            col = f'scaled_{target}'
+            lasso_pred[target] = (sub_1640[col].values - 0.90 * sub_1350[col].values) / 0.10
+
+        blended = sub_1350.copy()
+        for target in TARGETS:
+            col = f'scaled_{target}'
+            best_diverse = target_best_diverse[target]
+            blended[col] = (base_w * sub_1350[col].values +
+                           lasso_w * lasso_pred[target] +
+                           div_w * candidates[best_diverse][col].values)
+        blended.to_csv(SUBMISSION_DIR / f"submission_{sub_num}.csv", index=False)
+        print(f"  Sub {sub_num}: {base_w*100:.0f}% Sub1350 + {lasso_w*100:.0f}% LASSO + {div_w*100:.0f}% diverse")
+
+    elapsed = time.time() - t0
+    print(f"\nTotal time: {elapsed:.1f}s")
 
 
 if __name__ == "__main__":

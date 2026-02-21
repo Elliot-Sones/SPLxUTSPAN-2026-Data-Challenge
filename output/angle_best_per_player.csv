@@ -1,6 +1,0 @@
-player,config,r2
-1,arm_vector_f135,0.12302132588621051
-2,right_wrist_xyz_f110 + temporal_prep100_rel170,0.16795883384206722
-3,both_wrists_xyz_f120,0.06562425049687348
-4,left_wrist_xyz_f130 + temporal_prep100_rel170,0.24302553545991568
-5,both_wrists_xyz_f150,0.23593491967119185
