@@ -57,8 +57,6 @@ Side-by-side: a low-deviation shooter (Player 3) vs. a high-deviation shooter (P
   <img src="assets/image35.png" width="80%" alt="CNN architecture" />
 </p>
 
-**5. MiniRocket Temporal Fusion** - 5,000 random convolutional features stamped across the full 240-frame sequence detect timing patterns no human would think to look for. Fused directly into the Ridge feature space alongside hand-crafted biomechanics, so the useful ones act as corrections.
-
 ### Ensemble Strategy
 
 The final submission blends the Ridge pipeline (90-98% weight) with CNN predictions (2-10% weight), where CNN blend weights are set per-player based on each CNN's quality for that player. Players where the CNN performs well get more CNN signal; players where it's noisy get less.
@@ -132,18 +130,5 @@ uv run python scripts/position_69j_cnn.py
 # Generate final blended submission
 uv run python scripts/per_player_calibration_fix.py
 ```
-
-## What Didn't Work
-
-Not every idea improved scores. Some notable dead ends:
-- **Transfer learning** from external datasets (Shot7M2, CMU MoCap) - hurt by 27%
-- **Diversity-as-noise blending** (BiGRU, kNN) - diverse because they were wrong, not insightful
-- **All regularization attempts** - the model was not overfitting; it was at its capability ceiling
-- **MuJoCo physics simulation** - interesting exploration but no predictive signal beyond kinematics
-- **Fourier rhythm features** - too many features, model too weak standalone
-
-<p align="center">
-  <img src="assets/image16.gif" width="60%" alt="MuJoCo physics simulation — explored but no predictive lift" />
-</p>
 
 Full research logs are in `Research/`.
