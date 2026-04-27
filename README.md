@@ -27,7 +27,9 @@ Over 1-2 seconds, a basketball player coordinates 69 tracked body joints to prop
 
 The core insight was that every player shoots differently - not just in skill, but in mechanism. A global model averages over player-specific biomechanics and captures none of them. The final pipeline treats each player independently at every stage.
 
-![Pipeline Architecture](images/pipeline_architecture.png)
+<p align="center">
+  <img src="assets/image37.png" width="90%" alt="Ensemble architecture: Ridge pipeline + Velocity CNN + Position CNN → per-player blend → final prediction" />
+</p>
 
 ### Key Breakthroughs
 
