@@ -45,10 +45,12 @@ Side-by-side: a low-deviation shooter (Player 3) vs. a high-deviation shooter (P
 
 **2. Temporal Commitment Points** - Different targets are decided at different moments in the shooting motion. Depth commits ~930ms before release (forward momentum fixed mid-jump), angle commits ~550ms before (elbow geometry locked), and left/right commits after release (final wrist snap). Features are extracted at the frame each outcome is actually decided.
 
-![Temporal Commitment](images/temporal_commitment.png)
+<p align="center">
+  <img src="images/temporal_commitment.png" width="80%" alt="When each target is decided: temporal commitment points" />
+</p>
 
 <p align="center">
-  <img src="assets/image31.gif" width="50%" alt="Per-player commitment animation" />
+  <img src="assets/image31.gif" width="80%" alt="Per-player commitment animation" />
 </p>
 
 **3. Kinetic Chain + Hand Physics** - Energy flows from the ground through the hips, trunk, shoulder, and arrives at the fingertips. Features track this proximal-to-distal transfer, plus detailed finger/wrist mechanics at release: fingertip velocities, finger spread, wrist flexion, and curl across all five fingers.
