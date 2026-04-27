@@ -2,7 +2,7 @@
 
 Predicting basketball free throw landing outcomes (angle, depth, left/right) from full-body motion capture data. Built for the [SPLxUTSPAN 2026 Kaggle Competition](https://www.kaggle.com/competitions/spl-utspan-data-challenge-2026).
 
-**Final Leaderboard Score: 0.006148 MSE**
+🏆 **1st Place — Final Leaderboard Score: 0.006148 MSE**
 
 🎥 **Presentation walkthrough:** [https://www.youtube.com/watch?v=W278CqHmPhU](https://www.youtube.com/watch?v=W278CqHmPhU)
 
@@ -38,8 +38,9 @@ The core insight was that every player shoots differently - not just in skill, b
 Side-by-side: a low-deviation shooter (Player 3) vs. a high-deviation shooter (Player 5). Each player has a learned motor routine — deviation *from their own baseline* predicts shot error far better than raw poses.
 
 <p align="center">
-  <img src="assets/image7.gif" width="45%" alt="Player 3 — low deviation skeleton (Angle σ 1.64, Depth σ 2.32)" />
-  <img src="assets/image8.gif" width="45%" alt="Player 5 — high deviation skeleton (Angle σ 4.10, Depth σ 8.16)" />
+  <img src="assets/image7.gif" height="400" alt="Player 3 — low deviation skeleton (Angle σ 1.64, Depth σ 2.32)" />
+  &nbsp;&nbsp;
+  <img src="assets/image8.gif" height="400" alt="Player 5 — high deviation skeleton (Angle σ 4.10, Depth σ 8.16)" />
 </p>
 
 **2. Temporal Commitment Points** - Different targets are decided at different moments in the shooting motion. Depth commits ~930ms before release (forward momentum fixed mid-jump), angle commits ~550ms before (elbow geometry locked), and left/right commits after release (final wrist snap). Features are extracted at the frame each outcome is actually decided.
