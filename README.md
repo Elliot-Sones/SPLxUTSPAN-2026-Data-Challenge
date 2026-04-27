@@ -47,8 +47,7 @@ Side-by-side: a low-deviation shooter (Player 3) vs. a high-deviation shooter (P
 ![Temporal Commitment](images/temporal_commitment.png)
 
 <p align="center">
-  <img src="assets/image28.gif" width="55%" alt="Temporal focus visualization across the shooting motion" />
-  <img src="assets/image31.gif" width="40%" alt="Per-player commitment animation" />
+  <img src="assets/image31.gif" width="50%" alt="Per-player commitment animation" />
 </p>
 
 **3. Kinetic Chain + Hand Physics** - Energy flows from the ground through the hips, trunk, shoulder, and arrives at the fingertips. Features track this proximal-to-distal transfer, plus detailed finger/wrist mechanics at release: fingertip velocities, finger spread, wrist flexion, and curl across all five fingers.
