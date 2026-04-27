@@ -4,6 +4,8 @@ Predicting basketball free throw landing outcomes (angle, depth, left/right) fro
 
 **Final Leaderboard Score: 0.006148 MSE**
 
+🎥 **Presentation walkthrough:** [https://www.youtube.com/watch?v=W278CqHmPhU](https://www.youtube.com/watch?v=W278CqHmPhU)
+
 ![Leaderboard Progression](images/leaderboard_progression.png)
 
 ---
@@ -16,6 +18,11 @@ Over 1-2 seconds, a basketball player coordinates 69 tracked body joints to prop
 - 69 keypoints x 3 coordinates = 207 features per frame
 - Evaluation: mean MSE across 3 targets (all scaled to [0, 1])
 
+<p align="center">
+  <img src="assets/image1.png" width="55%" alt="69 keypoints + 3 target outputs" />
+  <img src="assets/image2.gif" width="35%" alt="Target outputs animation" />
+</p>
+
 ## Approach
 
 The core insight was that every player shoots differently - not just in skill, but in mechanism. A global model averages over player-specific biomechanics and captures none of them. The final pipeline treats each player independently at every stage.
@@ -26,13 +33,29 @@ The core insight was that every player shoots differently - not just in skill, b
 
 **1. Per-Player Locally Weighted Regression** - Each prediction is built from the player's own data, weighted by biomechanical similarity via a Gaussian kernel. Each test shot is explained primarily by the most similar training shots from that same player. (-13% error)
 
+Side-by-side: a low-deviation shooter (Player 3) vs. a high-deviation shooter (Player 5). Each player has a learned motor routine — deviation *from their own baseline* predicts shot error far better than raw poses.
+
+<p align="center">
+  <img src="assets/image7.gif" width="45%" alt="Player 3 — low deviation skeleton (Angle σ 1.64, Depth σ 2.32)" />
+  <img src="assets/image8.gif" width="45%" alt="Player 5 — high deviation skeleton (Angle σ 4.10, Depth σ 8.16)" />
+</p>
+
 **2. Temporal Commitment Points** - Different targets are decided at different moments in the shooting motion. Depth commits ~930ms before release (forward momentum fixed mid-jump), angle commits ~550ms before (elbow geometry locked), and left/right commits after release (final wrist snap). Features are extracted at the frame each outcome is actually decided.
 
 ![Temporal Commitment](images/temporal_commitment.png)
 
+<p align="center">
+  <img src="assets/image28.gif" width="55%" alt="Temporal focus visualization across the shooting motion" />
+  <img src="assets/image31.gif" width="40%" alt="Per-player commitment animation" />
+</p>
+
 **3. Kinetic Chain + Hand Physics** - Energy flows from the ground through the hips, trunk, shoulder, and arrives at the fingertips. Features track this proximal-to-distal transfer, plus detailed finger/wrist mechanics at release: fingertip velocities, finger spread, wrist flexion, and curl across all five fingers.
 
 **4. Velocity CNN + Position CNN** - Two 1D CNNs on the raw motion sequences: one on joint velocities (when momentum peaks, how sharply the wrist accelerates), one on joint positions (spatial trajectories). Despite sharing architecture, they capture different information - predictions correlate at only r=0.63 for depth, meaning they fail on different shots.
+
+<p align="center">
+  <img src="assets/image35.png" width="80%" alt="CNN architecture" />
+</p>
 
 **5. MiniRocket Temporal Fusion** - 5,000 random convolutional features stamped across the full 240-frame sequence detect timing patterns no human would think to look for. Fused directly into the Ridge feature space alongside hand-crafted biomechanics, so the useful ones act as corrections.
 
@@ -118,5 +141,9 @@ Not every idea improved scores. Some notable dead ends:
 - **All regularization attempts** - the model was not overfitting; it was at its capability ceiling
 - **MuJoCo physics simulation** - interesting exploration but no predictive signal beyond kinematics
 - **Fourier rhythm features** - too many features, model too weak standalone
+
+<p align="center">
+  <img src="assets/image16.gif" width="60%" alt="MuJoCo physics simulation — explored but no predictive lift" />
+</p>
 
 Full research logs are in `Research/`.
